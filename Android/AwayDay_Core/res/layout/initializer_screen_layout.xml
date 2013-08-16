@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/bg_initialize_screen"
+              android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:typeface="sans" android:textColor="@color/black"
+              android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_marginBottom="20.0dip" android:text="Please set your nickname first."/>
+    <EditText android:textSize="18.0sp" android:typeface="sans" android:textColor="@color/black"
+              android:id="@+id/initializer_username" android:background="@drawable/bg_edit_text"
+              android:layout_width="fill_parent" android:layout_height="50.0dip" android:singleLine="true"
+              android:inputType="text"/>
+    <ImageView android:id="@+id/initializer_submit_btn" android:background="@android:color/transparent"
+               android:layout_width="150.0dip" android:layout_height="46.0dip" android:layout_marginTop="10.0dip"
+               android:src="@drawable/ic_continue" android:inputType="text"/>
+</LinearLayout>

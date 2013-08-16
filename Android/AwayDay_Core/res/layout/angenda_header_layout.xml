@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:padding="16.0dip" android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@+id/agender_header_timer" android:layout_width="wrap_content"
+               android:layout_height="wrap_content" android:src="@drawable/ic_reminder_icon"
+               android:layout_alignParentRight="true"/>
+    <TextView android:textSize="24.0sp" android:textColor="@color/white" android:id="@+id/agenda_header_agenda_name"
+              android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="Train Station Pick Up" android:layout_alignParentLeft="true"/>
+    <TextView android:textSize="11.0sp" android:textColor="@color/agenda_header_time_text"
+              android:id="@+id/agenda_header_agenda_time" android:layout_width="wrap_content"
+              android:layout_height="wrap_content" android:text="06:30 ~ 07:00"
+              android:layout_below="@id/agenda_header_agenda_name" android:layout_alignParentLeft="true"/>
+</RelativeLayout>

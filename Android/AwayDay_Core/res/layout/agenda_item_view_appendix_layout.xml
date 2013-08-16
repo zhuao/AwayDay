@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/agenda_item_view_speaker_lable_size" android:typeface="sans"
+                  android:textColor="@color/black" android:paddingRight="5.0dip" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:text="@string/agenda_details_screen_speaker_label"/>
+        <TextView android:textSize="@dimen/agenda_item_view_speaker_size_size" android:typeface="sans"
+                  android:textColor="@color/gray" android:id="@+id/agenda_item_appendix_speaker"
+                  android:paddingRight="5.0dip" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/agenda_item_view_location_lable_size" android:typeface="sans"
+                  android:textColor="@color/black" android:paddingRight="5.0dip" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:text="@string/agenda_details_screen_location_label"/>
+        <TextView android:textSize="@dimen/agenda_item_view_location_size_size" android:typeface="sans"
+                  android:textColor="@color/gray" android:id="@+id/agenda_item_appendix_location"
+                  android:paddingRight="5.0dip" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/agenda_item_view_description_size_size" android:typeface="sans"
+              android:textColor="@color/gray" android:id="@+id/agenda_item_appendix_description"
+              android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_marginTop="10.0dip" android:lineSpacingExtra="3.0dip"/>
+    <RelativeLayout android:gravity="center_vertical" android:paddingLeft="10.0dip" android:paddingTop="16.0dip"
+                    android:paddingRight="10.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+        <RelativeLayout android:id="@+id/agenda_item_appendix_join_action" android:clickable="true"
+                        android:layout_width="65.0dip" android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true">
+            <ImageView android:id="@+id/agenda_item_appendix_join_btn" android:clickable="true"
+                       android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/join"
+                       android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            <TextView android:textSize="16.0sp" android:typeface="sans"
+                      android:textColor="@color/agenda_appendix_btn_label"
+                      android:id="@+id/agenda_item_appendix_join_label" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="Join"
+                      android:layout_below="@+id/agenda_item_appendix_join_btn" android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+        <RelativeLayout android:id="@+id/agenda_item_appendix_reminder_action" android:clickable="true"
+                        android:layout_width="65.0dip" android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+            <ImageView android:id="@+id/agenda_item_appendix_reminder_btn" android:clickable="true"
+                       android:layout_width="20.0dip" android:layout_height="20.0dip"
+                       android:src="@drawable/non_reminder" android:layout_alignParentTop="true"
+                       android:layout_centerHorizontal="true"/>
+            <TextView android:textSize="16.0sp" android:typeface="sans"
+                      android:textColor="@color/agenda_appendix_btn_label"
+                      android:id="@+id/agenda_item_appendix_reminder_label" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="Remind"
+                      android:layout_below="@+id/agenda_item_appendix_reminder_btn"
+                      android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+        <RelativeLayout android:id="@+id/agenda_item_appendix_share_action" android:clickable="true"
+                        android:layout_width="65.0dip" android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true">
+            <ImageView android:id="@+id/agenda_item_appendix_share_btn" android:clickable="true"
+                       android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/share"
+                       android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            <TextView android:textSize="16.0sp" android:typeface="sans"
+                      android:textColor="@color/agenda_appendix_btn_label"
+                      android:id="@+id/agenda_item_appendix_share_label" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="Share"
+                      android:layout_below="@id/agenda_item_appendix_share_btn" android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

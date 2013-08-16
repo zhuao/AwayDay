@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="agenda_item_view_date_size">25.0sp</dimen>
+    <dimen name="agenda_item_view_title_size">18.0sp</dimen>
+    <dimen name="agenda_item_view_time_size">16.0sp</dimen>
+    <dimen name="agenda_item_view_speaker_lable_size">15.0sp</dimen>
+    <dimen name="agenda_item_view_speaker_size_size">16.0sp</dimen>
+    <dimen name="agenda_item_view_location_lable_size">15.0sp</dimen>
+    <dimen name="agenda_item_view_location_size_size">16.0sp</dimen>
+    <dimen name="agenda_item_view_description_size_size">16.0sp</dimen>
+    <dimen name="agenda_item_view_padding_top">14.0dip</dimen>
+    <dimen name="agenda_item_view_padding_bottom">18.0dip</dimen>
+    <dimen name="agenda_item_view_title_padding_top">4.0dip</dimen>
+</resources>

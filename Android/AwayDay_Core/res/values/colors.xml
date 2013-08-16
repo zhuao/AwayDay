@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="gray">#ff7a7a7a</color>
+    <color name="bg_agenda_header">#ff414141</color>
+    <color name="bg_agenda_screen">#ff007ee7</color>
+    <color name="bg_button">#ff1fced9</color>
+    <color name="screen_divider">#ffb2b2b2</color>
+    <color name="agenda_header_time_text">#ffb1b1b1</color>
+    <color name="pull_to_refresh_text">#ff8d9aac</color>
+    <color name="agenda_item_view_date">#ff1dcfdb</color>
+    <color name="agenda_item_view_title">#ff4e4e4e</color>
+    <color name="reminder_screen_title">#ff1dcfdb</color>
+    <color name="reminder_screen_remind_time">#ffd7643e</color>
+    <color name="bg_alarm_alert">#66000000</color>
+    <color name="bg_path_header">#ff1fced9</color>
+    <color name="bg_path_header_name_container">#ff60e5e4</color>
+    <color name="path_divider">#ffbae9ec</color>
+    <color name="background">#fff6f6f6</color>
+    <color name="bg_pull_to_refresh_header">#ffe2e7ed</color>
+    <color name="path_item_view_item">#ff1fced9</color>
+    <color name="path_item_view_date">#ff979797</color>
+    <color name="path_list_view_divider">#ffe0e0e0</color>
+    <color name="agenda_highlight">#ffd65f36</color>
+    <color name="agenda_list_divider_top">#ffebebeb</color>
+    <color name="agenda_list_divider_bottom">#fff7f7f7</color>
+    <color name="blue">#ff007ee7</color>
+    <color name="green">#ff1fced9</color>
+    <color name="navigation_item_activated_indicator">#ff1fced9</color>
+    <color name="navigation_menu_item_label_deactive">#ffb2b2b2</color>
+    <color name="navigation_menu_item_label_active">#ff000000</color>
+    <color name="agenda_appendix_btn_label">#ff4e4e4e</color>
+    <color name="bg_initialize_screen">#fff5f5ec</color>
+    <color name="edit_text_border">#ffdbdbd6</color>
+</resources>

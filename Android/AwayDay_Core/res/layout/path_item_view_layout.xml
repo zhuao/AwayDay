@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_backgroud" android:paddingTop="10.0dip" android:paddingRight="15.0dip"
+                android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="right" android:id="@+id/path_item_view_left_container" android:paddingRight="5.0dip"
+                    android:layout_width="76.0dip" android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content">
+            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/path_item_view_item"
+                      android:id="@+id/path_item_view_time" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:text="18:36"/>
+            <TextView android:textSize="14.0sp" android:textColor="@color/path_item_view_date"
+                      android:id="@+id/path_item_view_date" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:text="15, Sep"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/path_item_view_right_container"
+                  android:paddingLeft="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:layout_toRightOf="@+id/path_item_view_left_container">
+        <LinearLayout android:id="@+id/path_item_view_content_container"
+                      android:background="@drawable/bg_path_item_content" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
+            <TextView android:textSize="18.0sp" android:typeface="sans" android:textColor="@color/black"
+                      android:id="@+id/path_item_view_content" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:text="text" android:singleLine="false"
+                      android:lineSpacingExtra="2.0dip"/>
+        </LinearLayout>
+        <FrameLayout android:id="@+id/path_item_view_images_container" android:paddingLeft="5.0dip"
+                     android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+    </LinearLayout>
+</RelativeLayout>

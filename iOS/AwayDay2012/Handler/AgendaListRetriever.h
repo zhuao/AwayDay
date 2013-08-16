@@ -1,0 +1,4 @@
+
+@interface AgendaListRetriever : NSObject
+
+@end

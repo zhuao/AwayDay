@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AwayDay</string>
+    <string name="handler_description">Hanlder</string>
+    <string name="pull_to_refresh_pull_label">Pull to refresh...</string>
+    <string name="pull_to_refresh_release_label">Release to refresh...</string>
+    <string name="pull_to_refresh_refreshing_label">Loading...</string>
+    <string name="pull_to_refresh_tap_label">Tap to refresh...</string>
+    <string name="agenda_details_screen_speaker_label">Speaker:</string>
+    <string name="agenda_details_screen_time_label">Time:</string>
+    <string name="reminder_screen_remind_time_label">Reminder</string>
+    <string name="share_screen_title_label">Share</string>
+    <string name="agenda_details_screen_location_label">Location:</string>
+    <string name="share_screen_take_photo">Take Photo</string>
+    <string name="share_screen_pick_photo">Pick Photo</string>
+    <string name="share_screen_add_photo">Photo</string>
+    <string name="share_screen_no_sd_card">There is not a SD card in your phone</string>
+    <string name="share_screen_pick_photo_cancel">Cancel</string>
+    <string name="share_success_message">Share Success</string>
+    <string name="save_success_but_share_error">Save post success but can not share.</string>
+    <string name="join_in_success_message">Join Success</string>
+    <string name="unjoin_success_message">Leave Success</string>
+    <string name="success_unjoin_session">Success unjoin</string>
+    <string name="save_share_to_local_error">Save to local error</string>
+    <string name="share_with_server_error">Share with server failed</string>
+    <string name="share_photo_error">Share image failed</string>
+    <string name="session_conflict_message">Session conflict</string>
+    <string name="success_join_session">Success join</string>
+</resources>

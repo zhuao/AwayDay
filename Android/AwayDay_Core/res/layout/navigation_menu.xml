@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_backgroud"
+              android:layout_width="fill_parent" android:layout_height="wrap_content"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@+id/sliding_drawer_handler" android:paddingTop="10.0dip"
+                  android:paddingBottom="10.0dip" android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:src="@drawable/ic_action_button"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/sliding_drawer_content"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.thoughtworks.mobile.awayday.components.AgendaNavigationMenuItem android:enabled="true"
+                                                                             xmlns:navigation = "http://schemas.android.com/apk/res/com.thoughtworks.mobile.awayday"
+                                                                             android:id="@+id/menu_item_agenda"
+                                                                             android:layout_width="fill_parent"
+                                                                             android:layout_height="wrap_content"
+                                                                             navigation:src="@drawable/navigation_menu_item_ic_agenda_selector"
+                                                                             navigation:text="AGENDA"/>
+        <com.thoughtworks.mobile.awayday.components.PathNavigationMenuItem android:id="@+id/menu_item_my_path"
+                                                                           xmlns:navigation = "http://schemas.android.com/apk/res/com.thoughtworks.mobile.awayday"
+                                                                           android:layout_width="fill_parent"
+                                                                           android:layout_height="wrap_content"
+                                                                           navigation:src="@drawable/navigation_menu_item_ic_path_selector"
+                                                                           navigation:text="PATH"/>
+        <com.thoughtworks.mobile.awayday.components.SettingsNavigationMenuItem android:id="@+id/menu_item_settings"
+                                                                               xmlns:navigation = "http://schemas.android.com/apk/res/com.thoughtworks.mobile.awayday"
+                                                                               android:layout_width="fill_parent"
+                                                                               android:layout_height="wrap_content"
+                                                                               navigation:src="@drawable/navigation_menu_item_ic_settings_selector"
+                                                                               navigation:text="SETTINGS"/>
+    </LinearLayout>
+</LinearLayout>

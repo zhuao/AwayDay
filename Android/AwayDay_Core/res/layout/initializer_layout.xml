@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@+id/app_screen_logo"
+               android:visibility="visible"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:src="@drawable/logo"
+               android:scaleType="fitXY"/>
+    <com.thoughtworks.mobile.awayday.screen.InitializerScreen android:id="@+id/initializer_screen"
+                                                              android:visibility="gone"
+                                                              android:layout_width="fill_parent"
+                                                              android:layout_height="fill_parent"/>
+</FrameLayout>

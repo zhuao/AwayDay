@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Introduction:</b>
+  <%= @event.introduction %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @event.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @event.longitude %>
+</p>
+
+<%= image_tag @event.photo.url %>
+
+
+<%= link_to 'Edit', event_edit_path %>
