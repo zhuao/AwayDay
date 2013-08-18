@@ -15,6 +15,8 @@
 #import "AppConstant.h"
 #import "GTMBase64.h"
 #import "SBJsonWriter.h"
+#import "WeiboSDK.h"
+#import "AFHTTPClient.h"
 
 #define text_length_limit   140
 #define tag_req_post_user_share 1001

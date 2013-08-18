@@ -27,7 +27,6 @@
 		44FEFD28178DA1DB00032CAA /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FEFD1C178DA1DB00032CAA /* SBJsonStreamWriterAccumulator.m */; };
 		44FEFD29178DA1DB00032CAA /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FEFD1E178DA1DB00032CAA /* SBJsonStreamWriterState.m */; };
 		44FEFD2A178DA1DB00032CAA /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FEFD20178DA1DB00032CAA /* SBJsonWriter.m */; };
-		44FEFD66178DA3E500032CAA /* libASILib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44FEFD65178DA3E500032CAA /* libASILib.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		49073B4915CB774A00BB1522 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49073B4715CB774A00BB1522 /* MenuViewController.m */; };
 		49073B4A15CB774A00BB1522 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49073B4815CB774A00BB1522 /* MenuViewController.xib */; };
 		49073B4E15CB7A5900BB1522 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49073B4C15CB7A5900BB1522 /* SettingViewController.m */; };
@@ -50,7 +49,6 @@
 		49168F9A15C7764800DEA67C /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 49168F9915C7764800DEA67C /* Session.m */; };
 		492B859615EF2C0B00802F8F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B859515EF2C0B00802F8F /* Default.png */; };
 		492B859915EF2C0F00802F8F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 492B859815EF2C0F00802F8F /* Default@2x.png */; };
-		492D43D717B8FF0B0082C814 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D43D517B8FF0B0082C814 /* libPushSDK.a */; };
 		492D43DA17B8FF960082C814 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D43D917B8FF960082C814 /* CoreFoundation.framework */; };
 		492D43DC17B8FF9E0082C814 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D43DB17B8FF9E0082C814 /* CoreTelephony.framework */; };
 		492D43DE17B9BD870082C814 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 492D43DD17B9BD870082C814 /* PushConfig.plist */; };
@@ -95,6 +93,10 @@
 		49D3244F160C575300B9CE19 /* AwayDay2012Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3244E160C575300B9CE19 /* AwayDay2012Test.m */; };
 		49D5881E15DA1FAA00A8DA72 /* share_post_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D5881B15DA1FAA00A8DA72 /* share_post_button.png */; };
 		49D5881F15DA1FAA00A8DA72 /* share_text_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D5881C15DA1FAA00A8DA72 /* share_text_back.png */; };
+		49D937F617C1168500889AA7 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D937F317C1168500889AA7 /* libWeiboSDK.a */; };
+		49D937F717C1168500889AA7 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D937F417C1168500889AA7 /* WeiboSDK.bundle */; };
+		49D937F917C116DB00889AA7 /* libASILib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D937F817C116DB00889AA7 /* libASILib.a */; };
+		49D937FA17C119A800889AA7 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 492D43D517B8FF0B0082C814 /* libPushSDK.a */; };
 		49D96BEA15C8EABB00E1C5C8 /* TopSessionClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D96BE915C8EABB00E1C5C8 /* TopSessionClockView.m */; };
 		49E1B4E515E5CFD9008844F9 /* share_image_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E1B4E315E5CFD9008844F9 /* share_image_icon.png */; };
 		49E1B4E615E5CFD9008844F9 /* share_image_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E1B4E415E5CFD9008844F9 /* share_image_icon@2x.png */; };
@@ -157,7 +159,6 @@
 		44FEFD1E178DA1DB00032CAA /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
 		44FEFD1F178DA1DB00032CAA /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		44FEFD20178DA1DB00032CAA /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		44FEFD65178DA3E500032CAA /* libASILib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libASILib.a; path = AwayDay2012/libASILib.a; sourceTree = "<group>"; };
 		44FEFD67178DA48000032CAA /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		44FEFD68178DA48000032CAA /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
 		44FEFD69178DA48000032CAA /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
@@ -264,6 +265,10 @@
 		49D5881C15DA1FAA00A8DA72 /* share_text_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_text_back.png; sourceTree = "<group>"; };
 		49D5882015DA24FB00A8DA72 /* ImageServiceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageServiceTest.h; path = AwayDay2012Tests/ImageServiceTest.h; sourceTree = SOURCE_ROOT; };
 		49D5882115DA24FB00A8DA72 /* ImageServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageServiceTest.m; path = AwayDay2012Tests/ImageServiceTest.m; sourceTree = SOURCE_ROOT; };
+		49D937F317C1168500889AA7 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		49D937F417C1168500889AA7 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		49D937F517C1168500889AA7 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		49D937F817C116DB00889AA7 /* libASILib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libASILib.a; path = AwayDay2012/libASILib.a; sourceTree = "<group>"; };
 		49D96BE815C8EABB00E1C5C8 /* TopSessionClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopSessionClockView.h; sourceTree = "<group>"; };
 		49D96BE915C8EABB00E1C5C8 /* TopSessionClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopSessionClockView.m; sourceTree = "<group>"; };
 		49E1B4E315E5CFD9008844F9 /* share_image_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_image_icon.png; sourceTree = "<group>"; };
@@ -293,10 +298,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D937FA17C119A800889AA7 /* libPushSDK.a in Frameworks */,
+				49D937F917C116DB00889AA7 /* libASILib.a in Frameworks */,
+				49D937F617C1168500889AA7 /* libWeiboSDK.a in Frameworks */,
 				492D43DC17B8FF9E0082C814 /* CoreTelephony.framework in Frameworks */,
 				492D43DA17B8FF960082C814 /* CoreFoundation.framework in Frameworks */,
-				445F4CD217AAB29A00EE4BA5,
-				44FEFD66178DA3E500032CAA /* libASILib.a in Frameworks */,
 				490B91E015D4B60E00539E2A /* libsqlite3.dylib in Frameworks */,
 				493697CA15C8D86400941C94 /* QuartzCore.framework in Frameworks */,
 				4969AD6615C78C8B005B6A54 /* CFNetwork.framework in Frameworks */,
@@ -306,8 +312,6 @@
 				4969AD6015C78C23005B6A54 /* SystemConfiguration.framework in Frameworks */,
 				49168F5215C769D300DEA67C /* UIKit.framework in Frameworks */,
 				49168F5415C769D300DEA67C /* Foundation.framework in Frameworks */,
-				49EEAC54179FC56700548645,
-				492D43D717B8FF0B0082C814 /* libPushSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +340,7 @@
 		44060A51178B043600ACA13C /* ExternalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				49D937F217C1168500889AA7 /* libWeiboSDK */,
 				492D43D217B8FF0B0082C814 /* JPush */,
 				44060A52178B04A500ACA13C /* AFNetworking */,
 			);
@@ -410,10 +415,9 @@
 		49168F4215C769D200DEA67C = {
 			isa = PBXGroup;
 			children = (
+				49D937F817C116DB00889AA7 /* libASILib.a */,
 				492D43DB17B8FF9E0082C814 /* CoreTelephony.framework */,
 				492D43D917B8FF960082C814 /* CoreFoundation.framework */,
-				444623B417ACC7CD00C4987A,
-				49EEAC53179FC56700548645,
 				492B859815EF2C0F00802F8F /* Default@2x.png */,
 				492B859515EF2C0B00802F8F /* Default.png */,
 				4968758C160455AA000BD587 /* Icon@2x.png */,
@@ -599,6 +603,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		49D937F217C1168500889AA7 /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				49D937F317C1168500889AA7 /* libWeiboSDK.a */,
+				49D937F417C1168500889AA7 /* WeiboSDK.bundle */,
+				49D937F517C1168500889AA7 /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
 		49D96BE615C8EA8B00E1C5C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,13 +791,8 @@
 				49B762D515F6F94600C5CFAA /* unjoin_button.png in Resources */,
 				49B762D615F6F94600C5CFAA /* join_button.png in Resources */,
 				49D3032815FDA5E10031752F /* unreminder_icon.png in Resources */,
-				195801BDE5772768CDD373B0,
-				19580EBD6CDA1786B4D51D39,
-				36867B6D9A17812751067601,
-				49464D0B179ACEE4007D7217,
-				3686780B2C3F77F040A1E291,
-				3686794C4619352E79992BFE,
 				492D43DE17B9BD870082C814 /* PushConfig.plist in Resources */,
+				49D937F717C1168500889AA7 /* WeiboSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,8 +968,8 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xue hai zeng (3H37WKV5BM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xue hai zeng (3H37WKV5BM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cyril Wei (U8A597GTFU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cyril Wei (U8A597GTFU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwayDay2012/AwayDay2012-Prefix.pch";
 				INFOPLIST_FILE = "AwayDay2012/AwayDay2012-Info.plist";
@@ -973,8 +982,8 @@
 					"\"$(SRCROOT)/AwayDay2012/ExternalLibs/JPush\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F90BA770-2BC7-4226-8DBB-20C299A119BF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F90BA770-2BC7-4226-8DBB-20C299A119BF";
+				PROVISIONING_PROFILE = "D047C67D-5BB2-422D-9CCE-B73D0806F1F6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D047C67D-5BB2-422D-9CCE-B73D0806F1F6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
