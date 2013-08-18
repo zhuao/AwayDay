@@ -295,7 +295,7 @@
 			files = (
 				492D43DC17B8FF9E0082C814 /* CoreTelephony.framework in Frameworks */,
 				492D43DA17B8FF960082C814 /* CoreFoundation.framework in Frameworks */,
-				445F4CD217AAB29A00EE4BA5 /* libWeiboSDK.a in Frameworks */,
+				445F4CD217AAB29A00EE4BA5,
 				44FEFD66178DA3E500032CAA /* libASILib.a in Frameworks */,
 				490B91E015D4B60E00539E2A /* libsqlite3.dylib in Frameworks */,
 				493697CA15C8D86400941C94 /* QuartzCore.framework in Frameworks */,
@@ -306,8 +306,9 @@
 				4969AD6015C78C23005B6A54 /* SystemConfiguration.framework in Frameworks */,
 				49168F5215C769D300DEA67C /* UIKit.framework in Frameworks */,
 				49168F5415C769D300DEA67C /* Foundation.framework in Frameworks */,
-				49EEAC54179FC56700548645 /* libASILib.a in Frameworks */,
+				49EEAC54179FC56700548645,
 				492D43D717B8FF0B0082C814 /* libPushSDK.a in Frameworks */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		49D3243F160C575300B9CE19 /* Frameworks */ = {
@@ -409,11 +410,10 @@
 		49168F4215C769D200DEA67C = {
 			isa = PBXGroup;
 			children = (
-
 				492D43DB17B8FF9E0082C814 /* CoreTelephony.framework */,
 				492D43D917B8FF960082C814 /* CoreFoundation.framework */,
-				444623B417ACC7CD00C4987A /* WeiboSDK.bundle */,
-				49EEAC53179FC56700548645 /* libASILib.a */,
+				444623B417ACC7CD00C4987A,
+				49EEAC53179FC56700548645,
 				492B859815EF2C0F00802F8F /* Default@2x.png */,
 				492B859515EF2C0B00802F8F /* Default.png */,
 				4968758C160455AA000BD587 /* Icon@2x.png */,
@@ -777,13 +777,12 @@
 				49B762D515F6F94600C5CFAA /* unjoin_button.png in Resources */,
 				49B762D615F6F94600C5CFAA /* join_button.png in Resources */,
 				49D3032815FDA5E10031752F /* unreminder_icon.png in Resources */,
-
-				195801BDE5772768CDD373B0 /* close.png in Resources */,
-				19580EBD6CDA1786B4D51D39 /* close@2x.png in Resources */,
-				36867B6D9A17812751067601 /* doc_edit_icon.png in Resources */,
-				49464D0B179ACEE4007D7217 /* EditSessionDetailViewController.xib in Resources */,
-				3686780B2C3F77F040A1E291 /* close.png in Resources */,
-				3686794C4619352E79992BFE /* close@2x.png in Resources */,
+				195801BDE5772768CDD373B0,
+				19580EBD6CDA1786B4D51D39,
+				36867B6D9A17812751067601,
+				49464D0B179ACEE4007D7217,
+				3686780B2C3F77F040A1E291,
+				3686794C4619352E79992BFE,
 				492D43DE17B9BD870082C814 /* PushConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -972,7 +971,6 @@
 					"\"${PROJECT_DIR}/AwayDay2012/ExternalLibs/libWeiboSDK\"/**",
 					"\"$(SRCROOT)/AwayDay2012/ExternalLibs/libWeiboSDK\"",
 					"\"$(SRCROOT)/AwayDay2012/ExternalLibs/JPush\"",
-
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F90BA770-2BC7-4226-8DBB-20C299A119BF";
@@ -1003,7 +1001,6 @@
 					"\"$(SRCROOT)/AwayDay2012/ExternalLibs/JPush\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "D047C67D-5BB2-422D-9CCE-B73D0806F1F6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D047C67D-5BB2-422D-9CCE-B73D0806F1F6";
 				WRAPPER_EXTENSION = app;
