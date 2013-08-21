@@ -36,29 +36,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
--(void)viewWillAppear:(BOOL)animated{
+
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.textView becomeFirstResponder];
-    if(self.userImage==nil){
-        self.imageIconView.alpha=0.0f;
+    if (self.userImage == nil) {
+        self.imageIconView.alpha = 0.0f;
     }
-    
-    if(self.session==nil){
+
+    if (self.session == nil) {
         [self.sessionTextLabel setText:@""];
-    }else{
+    } else {
         [self.sessionTextLabel setText:[NSString stringWithFormat:@"For %@", self.session.sessionTitle]];
     }
 
 
     appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDelegate hideMenuView];
-    
+
     [self.textCountLabel setText:[NSString stringWithFormat:@"%d/%d", self.textView.text.length, text_length_limit]];
 }
 
 #pragma mark - UIAction method
--(IBAction)backButtonPressed:(id)sender{
-    self.userImage=nil;
+- (IBAction)backButtonPressed:(id)sender {
+    self.userImage = nil;
     [self.textView setText:@""];
     [self.navigationController popViewControllerAnimated:YES];
 
@@ -68,53 +69,55 @@
 - (IBAction)sendButtonPressed:(id)sender {
     [AppHelper showInfoView:self.view];
     //to send the share
-    NSString *content=self.textView.text;
-    if(content.length==0 && self.userImage==nil){
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Input something please" message:@"you need to input something or put a photo" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    NSString *content = self.textView.text;
+    if (content.length == 0 && self.userImage == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input something please" message:@"you need to input something or put a photo" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
-    
+
     WBMessageObject *messageToShare = [self messageToShare:content];
 
     if (messageToShare.imageObject) {
         [self postWeiboWithText:messageToShare.text withImage:self.userImage];
     } else {
-        
+        [self postWeiboWithText:messageToShare.text];
     }
 }
+
 - (void)postWeiboWithText:(NSString *)text {
     NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
     NSURL *url = [NSURL URLWithString:@"https://api.weibo.com/2/statuses/update.json"];
-    
+
     NSDictionary *params = @{@"status" : text,
-               @"access_token" : accessToken};
+            @"access_token" : accessToken};
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient postPath:nil parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-    NSLog(@"Request Successful, response '%@'", responseStr);
-    [self requestFinished];
-    }            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
-    [self requestFailed];
+        NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"Request Successful, response '%@'", responseStr);
+        [self requestFinished];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+        [self requestFailed];
     }];
 }
-- (void)postWeiboWithText:(NSString *)text withImage:(UIImage *)image{
+
+- (void)postWeiboWithText:(NSString *)text withImage:(UIImage *)image {
     NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
     NSURL *url = [NSURL URLWithString:@"https://upload.api.weibo.com/2/statuses/upload.json"];
-    
+
     NSDictionary *params = @{@"status" : text,
-               @"access_token" : accessToken,
-               @"pic" : image};
+            @"access_token" : accessToken,
+            @"pic" : image};
 
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSURLRequest *urlRequest = [client multipartFormRequestWithMethod:@"POST" path:@"" parameters:params constructingBodyWithBlock:nil];
-    
-    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON){
+
+    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSString *responseStr = [[NSString alloc] initWithData:JSON encoding:NSUTF8StringEncoding];
         NSLog(@"Request Successful, response '%@'", responseStr);
         [self requestFinished];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Request Failed, response '%@'", JSON);
         NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
         [self requestFailed];
@@ -135,30 +138,31 @@
 
     return message;
 }
--(IBAction)addImageButtonPressed:(id)sender{
-    UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+
+- (IBAction)addImageButtonPressed:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [actionSheet addButtonWithTitle:@"Take Photo"];
     }
     [actionSheet addButtonWithTitle:@"Choose from Album"];
     [actionSheet addButtonWithTitle:@"Cancel"];
     [actionSheet setDestructiveButtonIndex:0];
-    [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons-1];
+    [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons - 1];
     [actionSheet showInView:self.view];
 }
 
 #pragma mark - UIActionSheet delegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(buttonIndex==actionSheet.numberOfButtons-1) return;
-    
-    UIImagePickerController *picker=[[UIImagePickerController alloc]init];
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.numberOfButtons - 1) return;
+
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     [picker setDelegate:self];
-    
-    if([[actionSheet buttonTitleAtIndex:buttonIndex] rangeOfString:@"Take"].length>0){
+
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] rangeOfString:@"Take"].length > 0) {
         //take photo
         [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
     }
-    if([[actionSheet buttonTitleAtIndex:buttonIndex] rangeOfString:@"Album"].length>0){
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] rangeOfString:@"Album"].length > 0) {
         //select from album
         [picker setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
     }
@@ -166,36 +170,38 @@
 }
 
 #pragma mark - UITextView delegate
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    if(self.textView.text.length<text_length_limit){
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    if (self.textView.text.length < text_length_limit) {
         return YES;
-    }else{
+    } else {
         return NO;
     }
 }
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if(range.location>=text_length_limit){
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (range.location >= text_length_limit) {
         return NO;
-    }else{
+    } else {
         return YES;
     }
 }
-- (void)textViewDidChange:(UITextView *)textView{
-    if(text_length_limit==-1) return;
-    if(self.textView.text.length==text_length_limit){
-        self.textView.text=[self.textView.text substringWithRange:NSMakeRange(0, text_length_limit)];
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if (text_length_limit == -1) return;
+    if (self.textView.text.length == text_length_limit) {
+        self.textView.text = [self.textView.text substringWithRange:NSMakeRange(0, text_length_limit)];
     }
     [self.textCountLabel setText:[NSString stringWithFormat:@"%d/%d", self.textView.text.length, text_length_limit]];
 }
 
 #pragma UIImagePickerViewController delegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     @autoreleasepool {
-        self.userImage= [info objectForKey:UIImagePickerControllerOriginalImage];
-        float xratio=self.userImage.size.width/600.0f;
-        float yratio=self.userImage.size.height/600.0f;
-        if(xratio>1.0f || yratio>1.0f){
-            self.userImage=[ImageService imageByScalingAndCroppingForSize:self.userImage toSize:CGSizeMake(self.userImage.size.width/xratio, self.userImage.size.height/yratio)];
+        self.userImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        float xratio = self.userImage.size.width / 600.0f;
+        float yratio = self.userImage.size.height / 600.0f;
+        if (xratio > 1.0f || yratio > 1.0f) {
+            self.userImage = [ImageService imageByScalingAndCroppingForSize:self.userImage toSize:CGSizeMake(self.userImage.size.width / xratio, self.userImage.size.height / yratio)];
         }
     }
     [self.imageIconView setAlpha:1.0f];
@@ -207,15 +213,16 @@
 }
 
 #pragma mark - util method
--(void)removeInfoView{
+- (void)removeInfoView {
     [AppHelper removeInfoView:self.view];
 }
--(void)postUserShare2Server{
-    NSMutableDictionary *param=[[NSMutableDictionary alloc]initWithCapacity:0];
-    if(self.session!=nil){
+
+- (void)postUserShare2Server {
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] initWithCapacity:0];
+    if (self.session != nil) {
         [param setObject:self.session.sessionID forKey:kSessionIDKey];
     }
-    if(self.userImage!=nil){
+    if (self.userImage != nil) {
         [param setObject:[AppHelper base64EncodeImage:self.userImage] forKey:kShareImageKey];
     }
 
@@ -226,11 +233,11 @@
     [param setObject:self.textView.text forKey:kShareTextKey];
     [param setObject:[appDelegate.userState objectForKey:kUserNameKey] forKey:kUserNameKey];
     [param setObject:timestamp forKey:kTimastampKey];
-    SBJsonWriter *jsonWriter=[[SBJsonWriter alloc]init];
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
     NSString *paramString = [jsonWriter stringWithObject:param];
 
     //I'm here
-    ASIFormDataRequest *req=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:kServiceUserShare]];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kServiceUserShare]];
     [req setRequestMethod:@"POST"];
     [req addRequestHeader:@"Content-Type" value:@"application/json"];
     [req appendPostData:[paramString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -239,9 +246,9 @@
     [req startAsynchronous];
 }
 
--(void)postUserPath2Server:(UserPath *)userPath{
-    NSMutableDictionary *param=[[NSMutableDictionary alloc]initWithCapacity:0];
-    if(self.userImage!=nil){
+- (void)postUserPath2Server:(UserPath *)userPath {
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] initWithCapacity:0];
+    if (self.userImage != nil) {
         //we don't need to submit path's image for now
 //        [param setObject:[AppHelper base64DecodeImage:self.userImage] forKey:kShareImageKey];
     }
@@ -249,11 +256,11 @@
     [param setObject:userPath.pathContent forKey:kPathTextKey];
     [param setObject:[appDelegate.userState objectForKey:kUserNameKey] forKey:kUserNameKey];
     [param setObject:userPath.pathID forKey:kTimastampKey];
-    SBJsonWriter *jsonWriter=[[SBJsonWriter alloc]init];
-    NSString *paramString =[jsonWriter stringWithObject:param];
+    SBJsonWriter *jsonWriter = [[SBJsonWriter alloc] init];
+    NSString *paramString = [jsonWriter stringWithObject:param];
 
     //I'm here
-    ASIFormDataRequest *req=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:kServiceUserPath]];
+    ASIFormDataRequest *req = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kServiceUserPath]];
     [req setRequestMethod:@"POST"];
     [req addRequestHeader:@"Content-Type" value:@"application/json"];
     [req appendPostData:[paramString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -269,12 +276,12 @@
     [AppHelper removeInfoView:self.view];
     [AppHelper showInfoView:self.view withText:@"Share successfully" withLoading:NO];
     [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(removeInfoView) userInfo:nil repeats:NO];
-    
+
     [appDelegate showMenuView];
     [NSTimer scheduledTimerWithTimeInterval:2.0f target:self.navigationController selector:@selector(popViewControllerAnimated:) userInfo:nil repeats:NO];
 }
 
-- (void)requestFailed{
+- (void)requestFailed {
     [AppHelper removeInfoView:self.view];
     [AppHelper showInfoView:self.view withText:@"Share Failed" withLoading:NO];
     [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(removeInfoView) userInfo:nil repeats:NO];
