@@ -114,6 +114,7 @@
 		49EC241A15CA2CE400DF9B34 /* join_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EC241715CA2CE400DF9B34 /* join_button.png */; };
 		49EC241B15CA2CE400DF9B34 /* reminder_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EC241815CA2CE400DF9B34 /* reminder_button.png */; };
 		49EC241C15CA2CE400DF9B34 /* share_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 49EC241915CA2CE400DF9B34 /* share_button.png */; };
+		F1E342C117C49EB3002A9084 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1E342C017C49EB3002A9084 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -291,6 +292,7 @@
 		49EC241715CA2CE400DF9B34 /* join_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = join_button.png; sourceTree = "<group>"; };
 		49EC241815CA2CE400DF9B34 /* reminder_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reminder_button.png; sourceTree = "<group>"; };
 		49EC241915CA2CE400DF9B34 /* share_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_button.png; sourceTree = "<group>"; };
+		F1E342C017C49EB3002A9084 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 				4969AD6015C78C23005B6A54 /* SystemConfiguration.framework in Frameworks */,
 				49168F5215C769D300DEA67C /* UIKit.framework in Frameworks */,
 				49168F5415C769D300DEA67C /* Foundation.framework in Frameworks */,
+				F1E342C117C49EB3002A9084 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +445,7 @@
 		49168F5015C769D300DEA67C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1E342C017C49EB3002A9084 /* Crashlytics.framework */,
 				490B91DF15D4B60E00539E2A /* libsqlite3.dylib */,
 				493697C915C8D86400941C94 /* QuartzCore.framework */,
 				4969AD6515C78C8B005B6A54 /* CFNetwork.framework */,
@@ -687,6 +691,7 @@
 				49168F4915C769D300DEA67C /* Sources */,
 				49168F4A15C769D300DEA67C /* Frameworks */,
 				49168F4B15C769D300DEA67C /* Resources */,
+				F1E342BF17C49DB5002A9084 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -819,6 +824,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		F1E342BF17C49DB5002A9084 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 12cf69bcd58555af123af07396580d08d970eee1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -972,6 +990,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Cyril Wei (U8A597GTFU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Cyril Wei (U8A597GTFU)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwayDay2012/AwayDay2012-Prefix.pch";
 				INFOPLIST_FILE = "AwayDay2012/AwayDay2012-Info.plist";
@@ -1000,6 +1022,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ThoughtWorks Inc";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ThoughtWorks Inc";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwayDay2012/AwayDay2012-Prefix.pch";
 				INFOPLIST_FILE = "AwayDay2012/AwayDay2012-Info.plist";

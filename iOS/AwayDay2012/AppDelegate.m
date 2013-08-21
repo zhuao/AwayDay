@@ -14,6 +14,8 @@
 #import "APService.h"
 #import "WeiboSDK.h"
 
+#import <Crashlytics/Crashlytics.h>
+
 #define away_day_user_state_key @"away_day_2012_user_state"
 #define away_day_user_db_name   @"user_db.sqlite"
 
@@ -48,7 +50,7 @@
     // Required
     [APService setupWithOption:launchOptions];
     
-    
+    [Crashlytics startWithAPIKey:@"12cf69bcd58555af123af07396580d08d970eee1"];
     
     [self copyDatabaseIfNeeded];
     [self openDatabase];
