@@ -18,6 +18,7 @@
 @property(nonatomic, strong) IBOutlet UILabel *textCountLabel;
 @property(nonatomic, strong) IBOutlet UILabel *sessionTextLabel;
 @property(nonatomic, strong) IBOutlet UIImageView *imageIconView;
+@property (strong, nonatomic) IBOutlet UIImageView *photoView;
 
 -(IBAction)backButtonPressed:(id)sender;
 -(IBAction)sendButtonPressed:(id)sender;

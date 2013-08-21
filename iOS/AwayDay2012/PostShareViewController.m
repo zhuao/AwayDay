@@ -85,6 +85,7 @@
     }
 }
 
+#pragma mark post methods
 - (void)postWeiboWithText:(NSString *)text {
     NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
     NSURL *url = [NSURL URLWithString:@"https://api.weibo.com/2/statuses/update.json"];
