@@ -17,6 +17,8 @@
 #import "SBJsonWriter.h"
 #import "WeiboSDK.h"
 #import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFJSONRequestOperation.h"
 
 #define text_length_limit   140
 #define tag_req_post_user_share 1001
@@ -72,30 +74,52 @@
         [alert show];
         return;
     }
-    NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
-
-    NSURL *url;
-    NSDictionary *params;
+    
     WBMessageObject *messageToShare = [self messageToShare:content];
+
     if (messageToShare.imageObject) {
-        url = [NSURL URLWithString:@"https://upload.api.weibo.com/2/statuses/upload.json"];
-        params = @{@"status" : messageToShare.text,
-                @"access_token" : accessToken,
-                @"pic" : messageToShare.imageObject};
+        [self postWeiboWithText:messageToShare.text withImage:self.userImage];
     } else {
-        url = [NSURL URLWithString:@"https://api.weibo.com/2/statuses/update.json"];
-        params = @{@"status" : messageToShare.text,
-                @"access_token" : accessToken};
+        
     }
+}
+- (void)postWeiboWithText:(NSString *)text {
+    NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
+    NSURL *url = [NSURL URLWithString:@"https://api.weibo.com/2/statuses/update.json"];
+    
+    NSDictionary *params = @{@"status" : text,
+               @"access_token" : accessToken};
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient postPath:nil parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"Request Successful, response '%@'", responseStr);
-        [self requestFinished:operation];
+    NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+    NSLog(@"Request Successful, response '%@'", responseStr);
+    [self requestFinished];
     }            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
-        [self requestFailed:operation];
+    NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+    [self requestFailed];
     }];
+}
+- (void)postWeiboWithText:(NSString *)text withImage:(UIImage *)image{
+    NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
+    NSURL *url = [NSURL URLWithString:@"https://upload.api.weibo.com/2/statuses/upload.json"];
+    
+    NSDictionary *params = @{@"status" : text,
+               @"access_token" : accessToken,
+               @"pic" : image};
+
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
+    NSURLRequest *urlRequest = [client multipartFormRequestWithMethod:@"POST" path:@"" parameters:params constructingBodyWithBlock:nil];
+    
+    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON){
+        NSString *responseStr = [[NSString alloc] initWithData:JSON encoding:NSUTF8StringEncoding];
+        NSLog(@"Request Successful, response '%@'", responseStr);
+        [self requestFinished];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+        NSLog(@"Request Failed, response '%@'", JSON);
+        NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+        [self requestFailed];
+    }];
+    [requestOperation start];
 }
 
 - (WBMessageObject *)messageToShare:(NSString *)inputText {
@@ -239,7 +263,7 @@
     [req startAsynchronous];
 }
 
-- (void)requestFinished:(AFHTTPRequestOperation *)operation {
+- (void)requestFinished {
     self.userImage = nil;
     [self.textView setText:@""];
     [AppHelper removeInfoView:self.view];
@@ -249,8 +273,8 @@
     [appDelegate showMenuView];
     [NSTimer scheduledTimerWithTimeInterval:2.0f target:self.navigationController selector:@selector(popViewControllerAnimated:) userInfo:nil repeats:NO];
 }
-- (void)requestFailed:(ASIHTTPRequest *)request{
-    NSLog(@"fail response:%@", request.responseString);
+
+- (void)requestFailed{
     [AppHelper removeInfoView:self.view];
     [AppHelper showInfoView:self.view withText:@"Share Failed" withLoading:NO];
     [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(removeInfoView) userInfo:nil repeats:NO];
