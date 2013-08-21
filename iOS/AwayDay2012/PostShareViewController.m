@@ -107,24 +107,74 @@
     NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
     NSURL *url = [NSURL URLWithString:@"https://upload.api.weibo.com/2/statuses/upload.json"];
 
-    NSDictionary *params = @{@"status" : text,
+    NSDictionary *_params = @{@"status" : text,
             @"access_token" : accessToken,
-            @"pic" : image};
+            };
 
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
-    NSURLRequest *urlRequest = [client multipartFormRequestWithMethod:@"POST" path:@"" parameters:params constructingBodyWithBlock:nil];
+            //@"pic" : UIImagePNGRepresentation(image)
 
-    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setTimeoutInterval:30];
+    [request setHTTPMethod:@"POST"];
+
+// set Content-Type in HTTP header
+    NSString *BoundaryConstant = @"Boundary+0xAbCdEfGbOuNdArY";
+    NSString* FileParamConstant = [NSString stringWithString:@"pic"];
+
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", BoundaryConstant];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+
+// post body
+    NSMutableData *body = [NSMutableData data];
+
+// add params (all params are strings)
+    for (NSString *param in _params) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", param] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"%@\r\n", [_params objectForKey:param]] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+// add image data
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    if (imageData) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", FileParamConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:imageData];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+
+// setting the body of the post to the reqeust
+    [request setHTTPBody:body];
+
+// set the content-length
+    NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+
+// set URL
+    [request setURL:url];
+
+
+
+//    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
+//    NSURLRequest *urlRequest = [client multipartFormRequestWithMethod:@"POST" path:@"" parameters:params constructingBodyWithBlock:nil];
+
+    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *urlRequest, NSHTTPURLResponse *response, id JSON) {
         NSString *responseStr = [[NSString alloc] initWithData:JSON encoding:NSUTF8StringEncoding];
         NSLog(@"Request Successful, response '%@'", responseStr);
         [self requestFinished];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    } failure:^(NSURLRequest *urlRequest, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Request Failed, response '%@'", JSON);
         NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
         [self requestFailed];
     }];
     [requestOperation start];
 }
+
 
 - (WBMessageObject *)messageToShare:(NSString *)inputText {
     WBMessageObject *message = [WBMessageObject message];
