@@ -12,6 +12,7 @@
 #import "DBService.h"
 
 #import "APService.h"
+#import "WeiboSDK.h"
 
 #define away_day_user_state_key @"away_day_2012_user_state"
 #define away_day_user_db_name   @"user_db.sqlite"
@@ -35,7 +36,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    //Register Weibo
+    [WeiboSDK registerApp:kAppKey];
+    [WeiboSDK enableDebugMode:YES];
 
     // Required
     [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
@@ -43,6 +47,9 @@
                                                    UIRemoteNotificationTypeAlert)];
     // Required
     [APService setupWithOption:launchOptions];
+    
+    
+    
     [self copyDatabaseIfNeeded];
     [self openDatabase];
     [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8*60*60]];
@@ -185,6 +192,31 @@
     NSString *databasePath=[documentsDir stringByAppendingPathComponent:databaseName];
 //    NSLog(@"%@", databasePath);
     sqlite3_open([databasePath UTF8String], &database);
+}
+
+- (void)didReceiveWeiboRequest:(WBBaseRequest *)request {
+
+}
+
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response {
+    if ([response isKindOfClass:WBAuthorizeResponse.class]) {
+        NSString *title = @"认证结果";
+        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n 原请求UserInfo数据: %@",
+                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken],
+                             response.userInfo, response.requestUserInfo];
+        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        [appDelegate.userState setObject:[(WBAuthorizeResponse *)response accessToken] forKey:kUserWeiboTokenKey];
+        [appDelegate.userState setObject:[(WBAuthorizeResponse *)response userID] forKey:kUserWeiboIDKey];
+        
+        NSLog(@"%@,%@", title, message);
+    }
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [WeiboSDK handleOpenURL:url delegate:self];
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [WeiboSDK handleOpenURL:url delegate:self];
 }
 
 @end

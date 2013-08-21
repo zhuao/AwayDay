@@ -439,15 +439,24 @@
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
-    if (self.postShareViewController == nil) {
-        PostShareViewController *psvc = [[PostShareViewController alloc] initWithNibName:@"PostShareViewController" bundle:nil];
-        self.postShareViewController = psvc;
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    if ([appDelegate.userState objectForKey:kUserWeiboTokenKey]) {
+        if (self.postShareViewController == nil) {
+            PostShareViewController *psvc = [[PostShareViewController alloc] initWithNibName:@"PostShareViewController" bundle:nil];
+            self.postShareViewController = psvc;
+        }
+        
+        Agenda *agenda = [self.agendaList objectAtIndex:self.selectedCell.section];
+        Session *session = [agenda.sessions objectAtIndex:self.selectedCell.row];
+        [self.postShareViewController setSession:session];
+        [self.navigationController pushViewController:self.postShareViewController animated:YES];
+    } else {
+        WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+        request.redirectURI = kRedirectURI;
+        request.scope = @"email,direct_messages_write";
+        [WeiboSDK sendRequest:request];
     }
-
-    Agenda *agenda = [self.agendaList objectAtIndex:self.selectedCell.section];
-    Session *session = [agenda.sessions objectAtIndex:self.selectedCell.row];
-    [self.postShareViewController setSession:session];
-    [self.navigationController pushViewController:self.postShareViewController animated:YES];
+    
 }
 
 #pragma mark - UITableView method

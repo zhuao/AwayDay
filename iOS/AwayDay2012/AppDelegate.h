@@ -12,9 +12,10 @@
 #import "MenuViewController.h"
 #import "SettingViewController.h"
 #import "UserPathViewController.h"
+#import "WeiboSDK.h"
 #import <sqlite3.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, WeiboSDKDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property(nonatomic, strong) UINavigationController *navigationController;
