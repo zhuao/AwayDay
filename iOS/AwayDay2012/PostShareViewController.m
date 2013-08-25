@@ -8,23 +8,22 @@
 
 #import "PostShareViewController.h"
 #import "AppDelegate.h"
-#import "UserPath.h"
 #import "AppHelper.h"
 #import "ImageService.h"
-#import "ASIFormDataRequest.h"
 #import "AppConstant.h"
-#import "GTMBase64.h"
-#import "SBJsonWriter.h"
 #import "WeiboSDK.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "AFJSONRequestOperation.h"
+#import <Social/Social.h>
+#import <ACCOUNTS/ACAccount.h>
 
 #define text_length_limit   140
 #define tag_req_post_user_share 1001
 
 @implementation PostShareViewController {
     AppDelegate *appDelegate;
+    SLComposeViewController *slComposerSheet;
 }
 @synthesize session = _session;
 @synthesize textView = _textView;
@@ -68,7 +67,7 @@
 - (IBAction)sendButtonPressed:(id)sender {
     [AppHelper showInfoView:self.view];
     //to send the share
-    NSString *content = self.textView.text;
+    /*NSString *content = self.textView.text;
     if (content.length == 0 && self.userImage == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input something please" message:@"you need to input something or put a photo" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
@@ -81,7 +80,8 @@
         [self postWeiboWithText:messageToShare.text withImage:self.userImage];
     } else {
         [self postWeiboWithText:messageToShare.text];
-    }
+    }*/
+    [self shareToWeibo:self];
 }
 
 #pragma mark post weibo methods
@@ -172,7 +172,7 @@
 - (WBMessageObject *)messageToShare:(NSString *)inputText {
     WBMessageObject *message = [WBMessageObject message];
 
-    message.text = [NSString stringWithFormat:@"#TWAwayDay2013# #%@# %@", self.session.sessionTitle, inputText];
+    message.text = [self buildWeiboText:inputText];
 
     if (self.userImage) {
         WBImageObject *image = [WBImageObject object];
@@ -181,6 +181,10 @@
     }
 
     return message;
+}
+
+- (NSString *)buildWeiboText:(NSString *)inputText {
+    return [NSString stringWithFormat:@"#TWAwayDay2013# #%@# %@", self.session.sessionTitle, inputText];
 }
 
 - (IBAction)addImageButtonPressed:(id)sender {
@@ -337,6 +341,38 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+- (IBAction)shareToWeibo:(id)sender {
+    [slComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+        NSLog(@"start completion block");
+        NSString *output;
+        switch (result) {
+            case SLComposeViewControllerResultCancelled:
+                output = @"Action Cancelled";
+                break;
+            case SLComposeViewControllerResultDone:
+                output = @"Post Successfull";
+                break;
+            default:
+                break;
+        }
+        if (result != SLComposeViewControllerResultCancelled)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Weibo Message" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
+
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo])
+    {
+        slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
+        [slComposerSheet setInitialText:[self buildWeiboText:self.textView.text]];
+        [slComposerSheet addImage:self.userImage];
+        [slComposerSheet addURL:[NSURL URLWithString:@"http://www.weibo.com/"]];
+        [self presentViewController:slComposerSheet animated:YES completion:nil];
+    }
 }
 
 @end

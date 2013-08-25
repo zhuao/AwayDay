@@ -137,11 +137,6 @@
                                                                                                }
     ];
     [requestOperation start];
-//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-//    [request setDelegate:self];
-//    [request setTimeOutSeconds:10.0f];
-//    [request setTag:tag_req_load_session_list];
-//    [request startAsynchronous];
 
     if (showLoading) {
         [AppHelper showInfoView:self.view withText:@"Loading..." withLoading:YES];
@@ -439,24 +434,33 @@
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    if ([appDelegate.userState objectForKey:kUserWeiboTokenKey]) {
-        if (self.postShareViewController == nil) {
+//    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+//    if ([appDelegate.userState objectForKey:kUserWeiboTokenKey]) {
+        [self displayPostShareVC];
+//
+//    } else {
+//        [self authorizeWeibo];
+//    }
+    
+}
+
+- (void)authorizeWeibo {
+    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+    request.redirectURI = kRedirectURI;
+    request.scope = @"email,direct_messages_write";
+    [WeiboSDK sendRequest:request];
+}
+
+- (void)displayPostShareVC {
+    if (self.postShareViewController == nil) {
             PostShareViewController *psvc = [[PostShareViewController alloc] initWithNibName:@"PostShareViewController" bundle:nil];
             self.postShareViewController = psvc;
         }
-        
-        Agenda *agenda = [self.agendaList objectAtIndex:self.selectedCell.section];
-        Session *session = [agenda.sessions objectAtIndex:self.selectedCell.row];
-        [self.postShareViewController setSession:session];
-        [self.navigationController pushViewController:self.postShareViewController animated:YES];
-    } else {
-        WBAuthorizeRequest *request = [WBAuthorizeRequest request];
-        request.redirectURI = kRedirectURI;
-        request.scope = @"email,direct_messages_write";
-        [WeiboSDK sendRequest:request];
-    }
-    
+
+    Agenda *agenda = [self.agendaList objectAtIndex:self.selectedCell.section];
+    Session *session = [agenda.sessions objectAtIndex:self.selectedCell.row];
+    [self.postShareViewController setSession:session];
+    [self.navigationController pushViewController:self.postShareViewController animated:YES];
 }
 
 #pragma mark - UITableView method
