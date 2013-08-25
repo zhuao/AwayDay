@@ -29,8 +29,3 @@ public class SaveToLocalTask extends AsyncTask<Footprint, Void, Void> {
         this.OnSaveFootprintListener.onFootprintSaved(this.savedFootprint, this.actionStatus);
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.task.SaveToLocalTask
- * JD-Core Version:    0.6.2
- */

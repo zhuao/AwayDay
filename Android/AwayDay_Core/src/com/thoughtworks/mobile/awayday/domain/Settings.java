@@ -3,6 +3,7 @@ package com.thoughtworks.mobile.awayday.domain;
 import com.thoughtworks.mobile.awayday.listeners.OnSettingsChangedListener;
 import com.thoughtworks.mobile.awayday.storage.BeanContext;
 import com.thoughtworks.mobile.awayday.storage.PreferencesStorage;
+import com.weibo.sdk.android.Oauth2AccessToken;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,6 +13,7 @@ public class Settings {
     private static Settings settings;
     private List<OnSettingsChangedListener> onSettingsChangedListenerList = new ArrayList();
     private String userName;
+    private Oauth2AccessToken accessToken = null;
 
     private Settings() {
         loadFromPreference(getLocalStorage());
@@ -47,9 +49,21 @@ public class Settings {
     }
 
     public String getUserName() {
-        if (this.userName == null)
+        if (this.userName == null) {
             this.userName = getLocalStorage().getUserName();
+        }
         return this.userName;
+    }
+
+    public Oauth2AccessToken getWeiboAccessToken() {
+        if (accessToken == null) {
+            this.accessToken = getLocalStorage().getWeiboAccessToken();
+        }
+        return accessToken;
+    }
+
+    public void saveWeiboAccessToken(String accessToken, String expiresIn) {
+        getLocalStorage().saveWeiboAccessToken(accessToken, expiresIn);
     }
 
     public void saveUserName(String paramString) {

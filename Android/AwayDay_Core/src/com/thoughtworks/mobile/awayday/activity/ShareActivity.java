@@ -6,17 +6,20 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import com.thoughtworks.mobile.awayday.AwayDayApplication;
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Footprint;
 import com.thoughtworks.mobile.awayday.domain.Path;
 import com.thoughtworks.mobile.awayday.factory.TaskProvider;
 import com.thoughtworks.mobile.awayday.helper.ShareScreenHelper;
+import com.thoughtworks.mobile.awayday.listeners.AuthDialogListener;
 import com.thoughtworks.mobile.awayday.listeners.ParseThumbnailListener;
 import com.thoughtworks.mobile.awayday.listeners.ScreenBackWithoutResultButtonClickedListener;
 import com.thoughtworks.mobile.awayday.listeners.SharePostScreenListener;
 import com.thoughtworks.mobile.awayday.screen.ShareScreen;
 import com.thoughtworks.mobile.awayday.storage.BeanContext;
 import com.thoughtworks.mobile.awayday.task.ParseThumbnailTask;
+import com.weibo.sdk.android.Weibo;
 
 public class ShareActivity extends Activity implements ScreenBackWithoutResultButtonClickedListener, SharePostScreenListener, ParseThumbnailListener {
     private Footprint footprint;
@@ -79,6 +82,11 @@ public class ShareActivity extends Activity implements ScreenBackWithoutResultBu
         initService();
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
+
     public void onParseEnd(Bitmap paramBitmap) {
         this.shareScreen.showThumbnail(paramBitmap);
     }
@@ -94,12 +102,16 @@ public class ShareActivity extends Activity implements ScreenBackWithoutResultBu
     }
 
     public void sharePost(Footprint paramFootprint) {
-        ((Path) BeanContext.getInstance().getBean(Path.class)).shareFootprint(paramFootprint);
+
+        if (AwayDayApplication.accessToken == null || !AwayDayApplication.accessToken.isSessionValid()) {
+            Weibo mWeibo = Weibo.getInstance("3039931072", "https://api.weibo.com/oauth2/default.html", "statuses_to_me_read");
+//            SsoHandler weiboSsoHandler = new SsoHandler(this, mWeibo);
+//            weiboSsoHandler.authorize(new AuthDialogListener(this, paramFootprint));
+            mWeibo.anthorize(this, new AuthDialogListener(this, paramFootprint));
+        } else {
+            ((Path) BeanContext.getInstance().getBean(Path.class)).shareFootprint(paramFootprint);
+        }
         finish();
     }
-}
 
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.activity.ShareActivity
- * JD-Core Version:    0.6.2
- */
+}

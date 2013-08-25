@@ -39,8 +39,12 @@ public class AppSettings {
         return getProperty("server.url");
     }
 
-    public static String getShareServerUrl() {
-        return getProperty("share.url");
+    public static String getWeiboTextApi() {
+        return getProperty("weibo.api.text");
+    }
+
+    public static String getWeiboImageApi() {
+        return getProperty("weibo.api.image");
     }
 
     public static boolean isSharedImageOn() {

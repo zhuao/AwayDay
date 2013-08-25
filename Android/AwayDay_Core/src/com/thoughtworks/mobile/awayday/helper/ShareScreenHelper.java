@@ -66,7 +66,7 @@ public class ShareScreenHelper {
     protected void doPickPhotoFromGallery() {
         try {
             Intent localIntent = getPhotoPickIntent();
-            this.context.startActivityForResult(localIntent, 3021);
+            this.context.startActivityForResult(localIntent, PHOTO_PICKED_WITH_DATA);
             return;
         } catch (ActivityNotFoundException localActivityNotFoundException) {
         }
@@ -76,7 +76,7 @@ public class ShareScreenHelper {
         try {
             this.mCurrentPhotoFile = createImageFile();
             Intent localIntent = getTakePickIntent(this.mCurrentPhotoFile);
-            this.context.startActivityForResult(localIntent, 3023);
+            this.context.startActivityForResult(localIntent, CAMERA_WITH_DATA);
             return;
         } catch (ActivityNotFoundException localActivityNotFoundException) {
             localActivityNotFoundException.printStackTrace();
@@ -122,8 +122,3 @@ public class ShareScreenHelper {
         localBuilder.create().show();
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.helper.ShareScreenHelper
- * JD-Core Version:    0.6.2
- */

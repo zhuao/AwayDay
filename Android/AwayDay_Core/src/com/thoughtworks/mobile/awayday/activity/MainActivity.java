@@ -113,6 +113,7 @@ public class MainActivity extends Activity implements AgendaItemActionClickedLis
     private void startShareActivity(Intent paramIntent) {
         paramIntent.setClass(this, ShareActivity.class);
         startActivity(paramIntent);
+        finish();
     }
 
     protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {
@@ -171,8 +172,3 @@ public class MainActivity extends Activity implements AgendaItemActionClickedLis
         startShareActivity(localIntent);
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.activity.MainActivity
- * JD-Core Version:    0.6.2
- */

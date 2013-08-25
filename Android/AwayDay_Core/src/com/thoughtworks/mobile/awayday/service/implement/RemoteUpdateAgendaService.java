@@ -42,7 +42,7 @@ public class RemoteUpdateAgendaService
     }
 
     private String fetchJsonFromLocal() {
-        return FileUtils.readFiles(this.context, "agendas_file.json");
+        return FileUtils.readFiles(this.context, AGENDAS_FILE_NAME);
     }
 
     private String fetchJsonFromServer() {
@@ -65,7 +65,7 @@ public class RemoteUpdateAgendaService
             Log.d("fetched agendas from server", str2);
             if (str1 == null)
                 break;
-            FileUtils.saveFile(this.context, "agendas_file.json", str1);
+            FileUtils.saveFile(this.context, AGENDAS_FILE_NAME, str1);
             return str1;
         }
         return fetchJsonFromLocal();

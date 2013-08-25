@@ -2,7 +2,7 @@ package com.thoughtworks.mobile.awayday.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import com.weibo.sdk.android.Oauth2AccessToken;
 
 public class LocalSharedPreferencesStorage
         implements PreferencesStorage {
@@ -16,17 +16,31 @@ public class LocalSharedPreferencesStorage
     }
 
     public String getUserName() {
-        return this.context.getSharedPreferences("settings_file", 1).getString("username", "");
+        return getSharedPreferences().getString(SETTINGS_USERNAME_KEY, EMPTY);
     }
 
-    public void setUserName(String paramString) {
-        SharedPreferences.Editor localEditor = this.context.getSharedPreferences("settings_file", 1).edit();
-        localEditor.putString("username", paramString);
+    public void setUserName(String username) {
+        SharedPreferences.Editor localEditor = getSharedPreferences().edit();
+        localEditor.putString("username", username);
         localEditor.commit();
     }
-}
 
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.storage.LocalSharedPreferencesStorage
- * JD-Core Version:    0.6.2
- */
+    public void saveWeiboAccessToken(String accessToken, String expireIn) {
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
+        editor.putString("weibo_access_token", accessToken);
+        editor.putString("weibo_expire_in", expireIn);
+        editor.commit();
+    }
+
+    private SharedPreferences getSharedPreferences() {
+        return context.getSharedPreferences(SETTINGS_FILE_NAME, 1);
+    }
+
+    public Oauth2AccessToken getWeiboAccessToken() {
+        if (getSharedPreferences().getString("weibo_access_token", null) != null && getSharedPreferences().getString("weibo_expire_in", null) != null) {
+            return new Oauth2AccessToken(getSharedPreferences().getString("weibo_access_token", null), getSharedPreferences().getString("weibo_expire_in", null));
+        }
+        return null;
+    }
+
+}

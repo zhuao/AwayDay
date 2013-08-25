@@ -2,79 +2,71 @@ package com.thoughtworks.mobile.awayday.service.implement;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
+import com.thoughtworks.mobile.awayday.AwayDayApplication;
 import com.thoughtworks.mobile.awayday.domain.Footprint;
-import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.helper.BitmapHelper;
 import com.thoughtworks.mobile.awayday.service.ShareToRemoteService;
 import com.thoughtworks.mobile.awayday.utils.ActionStatus;
 import com.thoughtworks.mobile.awayday.utils.AppSettings;
 import com.thoughtworks.mobile.awayday.utils.StringUtils;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
+import com.weibo.sdk.android.WeiboException;
+import com.weibo.sdk.android.WeiboParameters;
+import com.weibo.sdk.android.net.AsyncWeiboRunner;
+import com.weibo.sdk.android.net.HttpManager;
+import com.weibo.sdk.android.net.RequestListener;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.*;
 
-public class ShareToRemoteServiceImpl
-        implements ShareToRemoteService {
-    private static final String SHARE_URL = AppSettings.getShareServerUrl();
+public class ShareToRemoteServiceImpl implements ShareToRemoteService, RequestListener{
     private Context context;
-    private String deviceId;
 
     public ShareToRemoteServiceImpl(Context paramContext) {
         this.context = paramContext;
-        this.deviceId = ((TelephonyManager) this.context.getSystemService("phone")).getDeviceId();
     }
 
-    private void addImage(Footprint paramFootprint, JSONObject paramJSONObject)
+    private String getImage(Footprint paramFootprint)
             throws IOException, JSONException {
         if (StringUtils.isEmpty(paramFootprint.imageUriString))
-            return;
+            return null;
         Bitmap localBitmap = BitmapHelper.extractCompressedBitmap(this.context.getContentResolver(), paramFootprint.imageUri(), AppSettings.getBitmapCompressedWidth(), AppSettings.getBitmapCompressedHeight());
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
         localBitmap.compress(Bitmap.CompressFormat.PNG, AppSettings.getBitmapCompressedQuality(), localByteArrayOutputStream);
         try {
             String str = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 0));
             Log.i("upload buffer", "upload image as buffer to server, buffer string length is " + str.length());
-            paramJSONObject.put("share_image", str);
-            return;
+
+            return str;
         } catch (OutOfMemoryError localOutOfMemoryError) {
             Log.w("out of memory", "out of memory when decode image");
         }
+        return null;
     }
 
     private void sendFootprintToServer(Footprint paramFootprint)
             throws Exception {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("session_id", String.valueOf(this.deviceId));
-        localJSONObject.put("device_id", String.valueOf(this.deviceId));
-        localJSONObject.put("share_text", paramFootprint.content);
-        localJSONObject.put("username", Settings.getSettings().getUserName());
-        localJSONObject.put("timestamp", String.valueOf(paramFootprint.createdDate.getTime() / 1000L));
-        if (AppSettings.isSharedImageOn())
-            addImage(paramFootprint, localJSONObject);
-        sendToServer(localJSONObject);
+
+        WeiboParameters params = new WeiboParameters();
+        params.add("status", paramFootprint.content);
+        params.add("access_token", String.valueOf(AwayDayApplication.accessToken.getToken()));
+        if (AppSettings.isSharedImageOn() && paramFootprint.imageUriString != null) {
+
+            Log.e("Send weibo", "image1 +" + paramFootprint.imageUriString);
+            Log.e("Send weibo", "image2 +" + paramFootprint.imageUri().getPath());
+            Log.e("Send weibo", "image3 +" + paramFootprint.imageUri().getEncodedPath());
+            Log.e("Send weibo", "image4 +" + paramFootprint.imageUri().getQuery());
+            params.add("pic", paramFootprint.imageUri().getPath());
+
+            AsyncWeiboRunner.request(AppSettings.getWeiboImageApi(), params, "POST", this);
+        } else {
+            AsyncWeiboRunner.request(AppSettings.getWeiboTextApi(), params, HttpManager.HTTPMETHOD_GET, this);
+        }
+
+
     }
 
-    private void sendToServer(JSONObject paramJSONObject)
-            throws IOException {
-        DefaultHttpClient localDefaultHttpClient = new DefaultHttpClient();
-        HttpPost localHttpPost = new HttpPost(SHARE_URL);
-        String str = paramJSONObject.toString();
-        Log.d("share url", SHARE_URL);
-        Log.d("share string", str);
-        localHttpPost.setEntity(new StringEntity(str, "UTF-8"));
-        localHttpPost.setHeader("Accept", "application/json");
-        localHttpPost.setHeader("Content-type", "application/json");
-        localDefaultHttpClient.execute(localHttpPost, new BasicResponseHandler());
-    }
 
     public ActionStatus shareToServer(Footprint paramFootprint) {
         try {
@@ -86,6 +78,26 @@ public class ShareToRemoteServiceImpl
             Log.e("Share post", localException.getMessage());
         }
         return ActionStatus.SHARE_WITH_SERVER_ERROR;
+    }
+
+    @Override
+    public void onComplete(String s) {
+        Log.e("Send weibo", s);
+    }
+
+    @Override
+    public void onComplete4binary(ByteArrayOutputStream byteArrayOutputStream) {
+        Log.e("Send weibo", "onComplete4binary");
+    }
+
+    @Override
+    public void onIOException(IOException e) {
+        Log.e("Send weibo","onIOException", e);
+    }
+
+    @Override
+    public void onError(WeiboException e) {
+        Log.e("Send weibo","onError", e);
     }
 }
 

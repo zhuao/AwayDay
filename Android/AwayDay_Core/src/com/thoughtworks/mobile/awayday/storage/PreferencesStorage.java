@@ -1,12 +1,13 @@
 package com.thoughtworks.mobile.awayday.storage;
 
+import com.weibo.sdk.android.Oauth2AccessToken;
+
 public abstract interface PreferencesStorage {
     public abstract String getUserName();
 
-    public abstract void setUserName(String paramString);
-}
+    public abstract void setUserName(String username);
 
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.storage.PreferencesStorage
- * JD-Core Version:    0.6.2
- */
+    public abstract void saveWeiboAccessToken(String accessToken, String expiresIn);
+
+    public abstract Oauth2AccessToken getWeiboAccessToken();
+}

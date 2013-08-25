@@ -1,6 +1,5 @@
 package com.thoughtworks.mobile.awayday.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -88,8 +87,3 @@ public class InitializerActivity extends InstrumentedActivity implements OnSetti
         startMainActivity();
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.activity.InitializerActivity
- * JD-Core Version:    0.6.2
- */
