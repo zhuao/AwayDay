@@ -29,7 +29,6 @@
 @synthesize session = _session;
 @synthesize textView = _textView;
 @synthesize textCountLabel = _textCountLabel;
-@synthesize imageIconView = _imageIconView;
 @synthesize userImage = _userImage;
 @synthesize sessionTextLabel = _sessionTextLabel;
 
@@ -41,7 +40,7 @@
     [super viewWillAppear:animated];
     [self.textView becomeFirstResponder];
     if (self.userImage == nil) {
-        self.imageIconView.alpha = 0.0f;
+        self.photoView.alpha = 0.0f;
     }
 
     if (self.session == nil) {
@@ -85,7 +84,7 @@
     }
 }
 
-#pragma mark post methods
+#pragma mark post weibo methods
 - (void)postWeiboWithText:(NSString *)text {
     NSString *accessToken = [appDelegate.userState objectForKey:kUserWeiboTokenKey];
     NSURL *url = [NSURL URLWithString:@"https://api.weibo.com/2/statuses/update.json"];
@@ -110,8 +109,6 @@
     NSDictionary *_params = @{@"status" : text,
             @"access_token" : accessToken,
             };
-
-            //@"pic" : UIImagePNGRepresentation(image)
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
@@ -158,10 +155,6 @@
 // set URL
     [request setURL:url];
 
-
-
-//    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
-//    NSURLRequest *urlRequest = [client multipartFormRequestWithMethod:@"POST" path:@"" parameters:params constructingBodyWithBlock:nil];
 
     AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *urlRequest, NSHTTPURLResponse *response, id JSON) {
         NSString *responseStr = [[NSString alloc] initWithData:JSON encoding:NSUTF8StringEncoding];
@@ -255,7 +248,9 @@
             self.userImage = [ImageService imageByScalingAndCroppingForSize:self.userImage toSize:CGSizeMake(self.userImage.size.width / xratio, self.userImage.size.height / yratio)];
         }
     }
-    [self.imageIconView setAlpha:1.0f];
+    self.photoView.image = self.userImage;
+    [self.photoView setAlpha:1.0f];
+
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -267,7 +262,7 @@
 - (void)removeInfoView {
     [AppHelper removeInfoView:self.view];
 }
-
+/*
 - (void)postUserShare2Server {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] initWithCapacity:0];
     if (self.session != nil) {
@@ -295,7 +290,8 @@
     [req setTag:tag_req_post_user_share];
     [req setDelegate:self];
     [req startAsynchronous];
-}
+}*/
+/*
 
 - (void)postUserPath2Server:(UserPath *)userPath {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] initWithCapacity:0];
@@ -320,6 +316,7 @@
     [req setDelegate:self];
     [req startAsynchronous];
 }
+*/
 
 - (void)requestFinished {
     self.userImage = nil;
