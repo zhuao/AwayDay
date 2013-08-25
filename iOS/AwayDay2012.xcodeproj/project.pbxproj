@@ -17,6 +17,7 @@
 		36867FBF4B1BE9B93520C01F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36867D47ABF6EAE2645B32D8 /* AFImageRequestOperation.m */; };
 		36867FEC347E89351575287C /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3686770DA7A10797F0737085 /* AFHTTPClient.m */; };
 		44060A50178B040200ACA13C /* AgendaListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 44060A4F178B040200ACA13C /* AgendaListRetriever.m */; };
+		44E153C417CA5ED700FFDE27 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E153C317CA5ED700FFDE27 /* Social.framework */; };
 		44FEFD21178DA1DB00032CAA /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FEFD0E178DA1DB00032CAA /* SBJsonParser.m */; };
 		44FEFD22178DA1DB00032CAA /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FEFD10178DA1DB00032CAA /* SBJsonStreamParser.m */; };
 		44FEFD23178DA1DB00032CAA /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 44FEFD12178DA1DB00032CAA /* SBJsonStreamParserAccumulator.m */; };
@@ -139,6 +140,7 @@
 		36867E0CECE210304AD5EBFF /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		44060A4E178B040200ACA13C /* AgendaListRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaListRetriever.h; path = Handler/AgendaListRetriever.h; sourceTree = "<group>"; };
 		44060A4F178B040200ACA13C /* AgendaListRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaListRetriever.m; path = Handler/AgendaListRetriever.m; sourceTree = "<group>"; };
+		44E153C317CA5ED700FFDE27 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		44FEFD0C178DA1DB00032CAA /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
 		44FEFD0D178DA1DB00032CAA /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		44FEFD0E178DA1DB00032CAA /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E153C417CA5ED700FFDE27 /* Social.framework in Frameworks */,
 				49D937FA17C119A800889AA7 /* libPushSDK.a in Frameworks */,
 				49D937F917C116DB00889AA7 /* libASILib.a in Frameworks */,
 				49D937F617C1168500889AA7 /* libWeiboSDK.a in Frameworks */,
@@ -418,6 +421,7 @@
 		49168F4215C769D200DEA67C = {
 			isa = PBXGroup;
 			children = (
+				44E153C317CA5ED700FFDE27 /* Social.framework */,
 				49D937F817C116DB00889AA7 /* libASILib.a */,
 				492D43DB17B8FF9E0082C814 /* CoreTelephony.framework */,
 				492D43D917B8FF960082C814 /* CoreFoundation.framework */,
@@ -997,7 +1001,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwayDay2012/AwayDay2012-Prefix.pch";
 				INFOPLIST_FILE = "AwayDay2012/AwayDay2012-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/AwayDay2012\"",
@@ -1029,7 +1033,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwayDay2012/AwayDay2012-Prefix.pch";
 				INFOPLIST_FILE = "AwayDay2012/AwayDay2012-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/AwayDay2012\"",
