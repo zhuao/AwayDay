@@ -14,8 +14,8 @@ class Session < ActiveRecord::Base
     { session_description: description,
       session_title: title,
       session_speaker: speaker,
-      session_start: start,
-      session_end: self.end,
+      session_start: start.strftime("%Y-%m-%dT%H:%M:%S%z"),
+      session_end: self.end.strftime("%Y-%m-%dT%H:%M:%S%z"),
       session_location: location,
       session_id: id
     }
