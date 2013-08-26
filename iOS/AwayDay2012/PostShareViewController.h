@@ -23,7 +23,4 @@
 -(IBAction)sendButtonPressed:(id)sender;
 -(IBAction)addImageButtonPressed:(id)sender;
 
--(void)postUserShare2Server;
--(void)postUserPath2Server:(UserPath *)userPath;
-
 @end
