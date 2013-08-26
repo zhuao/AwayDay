@@ -32,10 +32,10 @@ NSString const *kTimastampKey=@"timestamp";
 NSString const *kPathTextKey=@"text_content";
 NSString const *kPathImageKey=@"image_content";
 
-NSString const *kServiceLoadSessionList=@"http://awayday2012.herokuapp.com/sessions_grouped_by_date";
+//NSString const *kServiceLoadSessionList=@"http://awayday2012.herokuapp.com/sessions_grouped_by_date";
 
 //NSString const *kServiceLoadSessionList=@"http://localhost:3000/sessions_grouped_by_date";
-//NSString const *kServiceLoadSessionList=@"http://ieat.thoughtworks.biz:8000/sessions_grouped_by_date";
+NSString const *kServiceLoadSessionList=@"http://ieat.thoughtworks.biz:8000/sessions_grouped_by_date";
 NSString *kServiceUserPath=@"http://awayday2012.herokuapp.com/moment";
 NSString *kServiceUserShare=@"http://awayday2012.sinaapp.com/share.php";
 
