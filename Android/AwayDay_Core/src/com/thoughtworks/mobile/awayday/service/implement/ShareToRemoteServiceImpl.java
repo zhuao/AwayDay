@@ -6,6 +6,7 @@ import android.util.Base64;
 import android.util.Log;
 import com.thoughtworks.mobile.awayday.AwayDayApplication;
 import com.thoughtworks.mobile.awayday.domain.Footprint;
+import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.helper.BitmapHelper;
 import com.thoughtworks.mobile.awayday.service.ShareToRemoteService;
 import com.thoughtworks.mobile.awayday.utils.ActionStatus;

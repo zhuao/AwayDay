@@ -10,6 +10,7 @@ import com.thoughtworks.mobile.awayday.AwayDayApplication;
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Footprint;
 import com.thoughtworks.mobile.awayday.domain.Path;
+import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.factory.TaskProvider;
 import com.thoughtworks.mobile.awayday.helper.ShareScreenHelper;
 import com.thoughtworks.mobile.awayday.listeners.AuthDialogListener;
@@ -80,6 +81,11 @@ public class ShareActivity extends Activity implements ScreenBackWithoutResultBu
         super.onCreate(paramBundle);
         initUI();
         initService();
+        initWeiboAccessToken();
+    }
+
+    private void initWeiboAccessToken() {
+        AwayDayApplication.accessToken = Settings.getSettings().getWeiboAccessToken();
     }
 
     @Override

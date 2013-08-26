@@ -25,13 +25,13 @@ public class RemoteUpdateAgendaService
         implements UpdateAgendaService {
     private static final String AGENDAS_FILE_NAME = "agendas_file.json";
     private static final String AGENDAS_URL = AppSettings.getServerUrl() + "/sessions_grouped_by_date";
-    private SimpleDateFormat agendaDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+    private SimpleDateFormat agendaDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
     private Context context;
-    private SimpleDateFormat sessionDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+    private SimpleDateFormat sessionDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
 
     public RemoteUpdateAgendaService(Context paramContext) {
         this.context = paramContext;
-        this.sessionDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+        this.sessionDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
     }
 
     private List<Agenda> fetchAgendas() {
@@ -59,14 +59,14 @@ public class RemoteUpdateAgendaService
     }
 
     private String getAgendasJSON() {
-        String str1 = fetchJsonFromServer();
-        if (str1 == null) ;
-        for (String str2 = " no agendas returned from server"; ; str2 = str1) {
+        String response = fetchJsonFromServer();
+        if (response == null) ;
+        for (String str2 = " no agendas returned from server"; ; str2 = response) {
             Log.d("fetched agendas from server", str2);
-            if (str1 == null)
+            if (response == null)
                 break;
-            FileUtils.saveFile(this.context, AGENDAS_FILE_NAME, str1);
-            return str1;
+            FileUtils.saveFile(this.context, AGENDAS_FILE_NAME, response);
+            return response;
         }
         return fetchJsonFromLocal();
     }

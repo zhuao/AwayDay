@@ -8,13 +8,13 @@ import java.util.Date;
 import java.util.Locale;
 
 public class StringUtils {
-    private static SimpleDateFormat agendaDateFormat = new SimpleDateFormat("dd MMM, yyyy", Locale.ENGLISH);
-    private static SimpleDateFormat agendaDateFormatForDb = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-    private static SimpleDateFormat pathDateFormat = new SimpleDateFormat("dd, MMM", Locale.ENGLISH);
-    private static SimpleDateFormat pathTimeFormat = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
-    private static SimpleDateFormat pullToRefreshDateFormat = new SimpleDateFormat("yyyy-MMMM-dd HH:mm:ss", Locale.ENGLISH);
-    private static SimpleDateFormat sessionDateFormat = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
-    private static SimpleDateFormat sessionDateFormatForDb = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+    private static SimpleDateFormat agendaDateFormat = new SimpleDateFormat("dd MMM, yyyy", Locale.CHINA);
+    private static SimpleDateFormat agendaDateFormatForDb = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+    private static SimpleDateFormat pathDateFormat = new SimpleDateFormat("dd, MMM", Locale.CHINA);
+    private static SimpleDateFormat pathTimeFormat = new SimpleDateFormat("HH:mm", Locale.CHINA);
+    private static SimpleDateFormat pullToRefreshDateFormat = new SimpleDateFormat("yyyy-MMMM-dd HH:mm:ss", Locale.CHINA);
+    private static SimpleDateFormat sessionDateFormat = new SimpleDateFormat("HH:mm", Locale.CHINA);
+    private static SimpleDateFormat sessionDateFormatForDb = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
 
     public static String formatAgendaDateToString(Date paramDate) {
         return agendaDateFormat.format(paramDate);

@@ -19,11 +19,7 @@ public class AwayDayApplication extends Application {
         initJPushNotificationView();
         JPushInterface.resumePush(this);
 
-        initWeiboAccessToken();
-    }
 
-    private void initWeiboAccessToken() {
-        accessToken = Settings.getSettings().getWeiboAccessToken();
     }
 
     private void initJPushNotificationView() {
