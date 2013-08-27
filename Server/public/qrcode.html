@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+    <TITLE> New Document </TITLE>
+    <META NAME="Generator" CONTENT="EditPlus">
+    <META NAME="Author" CONTENT="">
+    <META NAME="Keywords" CONTENT="">
+    <META NAME="Description" CONTENT="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function ($) {
+            var _options = null;
+            jQuery.fn.MyQRCode = function (options) {
+                _options = $.extend({}, $.fn.MyQRCode.defaults, options);
+                return this.each(function () {
+                    //var codebase = "https://chart.googleapis.com/chart?chs={size}&cht=qr&chl={content}&choe={encoding}";
+                    var codebase = "http://chart.apis.google.com/chart?{content}";
+                    //var mycode = codebase.replace(/{size}/g, _options.size);
+                    //mycode = mycode.replace(/{content}/g, escape(_options.content));
+                    //mycode = mycode.replace(/{encoding}/g, _options.encoding);
+                    var mycode = codebase.replace(/{content}/g, _options.content);
+                    //$("#genQrCode").remove();
+                    $(this).append("<img src='" + mycode + "'>");
+                });
+            }
+            //default values
+            jQuery.fn.MyQRCode.defaults = {
+                encoding:"UTF-8",
+                content:window.location,
+                size:"150x150"
+            };
+        })(jQuery);
+    </script>
+    <script>
+        //OR just
+
+
+        function getQRCode() {
+
+            var input = $("div input");
+            var param = {
+                chs:"200x200",
+                cht:"qr",
+                chld:"L|1",
+                choe:"UTF-8",
+                chl:""
+            };
+
+
+//            var chl = [], title, val;
+//            var title = $.trim($(this).attr('id'));
+//            var val1 = $.trim($(this).val());
+//            alert(val);
+//            chl.push(title);
+//            chl.push(":");
+//            chl.push(val);
+//            chl.push("\n");
+//var val = "http://10.18.3.63:3000/download?username="+val1;
+            var val = "http://10.18.2.1:3000/download";
+
+            param.chl = val;
+
+
+            var content = $.param(param);
+            $("#qrcode").MyQRCode({
+                content:content
+            });
+
+
+        }
+
+        getQRCode();
+    </script>
+</HEAD>
+
+
+<BODY>
+名片
+<br><br><br>
+
+<div>
+    姓名：<input id="url" value=""><br>
+</div>
+<input type="button" value="生成二维码" onclick="getQRCode()">
+<span id="qrcode" style="padding-left:100px"></span>
+</BODY>
+</HTML>
