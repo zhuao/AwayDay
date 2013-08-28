@@ -201,16 +201,10 @@
 }
 
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response {
-    if ([response isKindOfClass:WBAuthorizeResponse.class]) {
-        NSString *title = @"认证结果";
-        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n 原请求UserInfo数据: %@",
-                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken],
-                             response.userInfo, response.requestUserInfo];
+    if ([response isKindOfClass:WBAuthorizeResponse.class] && response.statusCode == WeiboSDKResponseStatusCodeSuccess) {
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         [appDelegate.userState setObject:[(WBAuthorizeResponse *)response accessToken] forKey:kUserWeiboTokenKey];
         [appDelegate.userState setObject:[(WBAuthorizeResponse *)response userID] forKey:kUserWeiboIDKey];
-        
-        NSLog(@"%@,%@", title, message);
     }
 }
 
