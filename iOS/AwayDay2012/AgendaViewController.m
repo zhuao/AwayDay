@@ -314,7 +314,8 @@
 
     UITextView *sessionNote = [[UITextView alloc] initWithFrame:CGRectMake(0, y, 320, 100)];
     [sessionNote setBackgroundColor:[UIColor clearColor]];
-    [sessionNote setUserInteractionEnabled:NO];
+    [sessionNote setUserInteractionEnabled:YES];
+    [sessionNote setEditable:NO];
     [sessionNote setFrame:CGRectMake(0, y, 320, size.height + 14)];
     [sessionNote setText:session.sessionNote];
     [sessionNote setFont:[UIFont systemFontOfSize:13.0f]];
