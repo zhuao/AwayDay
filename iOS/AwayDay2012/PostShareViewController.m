@@ -181,7 +181,12 @@
 }
 
 - (NSString *)buildWeiboText:(NSString *)inputText {
-    return [NSString stringWithFormat:@"#TWAwayDay2013# #%@# %@", self.session.sessionTitle, inputText];
+    if (self.session.sessionTitle) {
+        return [NSString stringWithFormat:@"#TWAwayDay2013# #%@# %@", self.session.sessionTitle, inputText];
+    } else {
+        return [NSString stringWithFormat:@"#TWAwayDay2013# %@", inputText];
+    }
+
 }
 
 - (IBAction)addImageButtonPressed:(id)sender {
