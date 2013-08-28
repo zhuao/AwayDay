@@ -55,12 +55,29 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(IBAction)addPathButtonPressed:(id)sender{
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    if ([appDelegate.userState objectForKey:kUserWeiboTokenKey]) {
+        [self displayPostShareVC];
+    } else {
+        [self authorizeWeibo];
+    }
+}
+
+- (void)authorizeWeibo {
+    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+    request.redirectURI = kRedirectURI;
+    request.scope = @"email,direct_messages_write";
+    [WeiboSDK sendRequest:request];
+}
+
+- (void)displayPostShareVC {
     if(self.postShareViewController==nil){
         PostShareViewController *psvc=[[PostShareViewController alloc]initWithNibName:@"PostShareViewController" bundle:nil];
         self.postShareViewController=psvc;
     }
     [self.navigationController pushViewController:self.postShareViewController animated:YES];
 }
+
 -(IBAction)pathImageButtonPressed:(id)sender{
     UIButton *button=(UIButton *)sender;
     UITableViewCell *cell=(UITableViewCell *)[button superview];
