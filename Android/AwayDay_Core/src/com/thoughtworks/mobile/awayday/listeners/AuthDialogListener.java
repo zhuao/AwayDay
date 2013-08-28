@@ -27,7 +27,7 @@ public class AuthDialogListener implements WeiboAuthListener {
     public void onComplete(Bundle values) {
 
         String token = values.getString("access_token");
-        String expiresIn = values.getString("expiresIn");
+        String expiresIn = values.getString("expires_in");
 
         Oauth2AccessToken accessToken = new Oauth2AccessToken(token, expiresIn);
         if (accessToken.isSessionValid()) {

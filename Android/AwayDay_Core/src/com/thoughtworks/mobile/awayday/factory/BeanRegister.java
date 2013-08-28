@@ -18,8 +18,7 @@ import com.thoughtworks.mobile.awayday.storage.LocalStorage;
 import com.thoughtworks.mobile.awayday.storage.PreferencesStorage;
 import com.thoughtworks.mobile.awayday.storage.SqliteStorage;
 
-public class BeanRegister
-        implements BaseRegister {
+public class BeanRegister implements BaseRegister {
     private Context context;
 
     public BeanRegister(Context paramContext) {

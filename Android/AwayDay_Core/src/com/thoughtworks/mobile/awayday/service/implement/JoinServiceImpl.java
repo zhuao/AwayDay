@@ -29,7 +29,7 @@ public class JoinServiceImpl
     }
 
     private void shareFootprint(Footprint paramFootprint) {
-        ((Path) BeanContext.getInstance().getBean(Path.class)).shareFootprint(paramFootprint);
+        ((Path) BeanContext.getInstance().getBean(Path.class)).saveToLocal(paramFootprint);
     }
 
     private ActionStatus unJoinSession(Session paramSession) {

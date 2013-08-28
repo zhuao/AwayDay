@@ -13,10 +13,7 @@ import com.thoughtworks.mobile.awayday.domain.Path;
 import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.factory.TaskProvider;
 import com.thoughtworks.mobile.awayday.helper.ShareScreenHelper;
-import com.thoughtworks.mobile.awayday.listeners.AuthDialogListener;
-import com.thoughtworks.mobile.awayday.listeners.ParseThumbnailListener;
-import com.thoughtworks.mobile.awayday.listeners.ScreenBackWithoutResultButtonClickedListener;
-import com.thoughtworks.mobile.awayday.listeners.SharePostScreenListener;
+import com.thoughtworks.mobile.awayday.listeners.*;
 import com.thoughtworks.mobile.awayday.screen.ShareScreen;
 import com.thoughtworks.mobile.awayday.storage.BeanContext;
 import com.thoughtworks.mobile.awayday.task.ParseThumbnailTask;
@@ -101,6 +98,8 @@ public class ShareActivity extends Activity implements ScreenBackWithoutResultBu
         super.onPostCreate(paramBundle);
         initFootprint();
         initScreen();
+
+        BeanContext.getInstance().putBean(OnShareFootprintListener.class, new ShareFootprintMonitor(this));
     }
 
     public void selectImage(Footprint paramFootprint) {
@@ -111,8 +110,6 @@ public class ShareActivity extends Activity implements ScreenBackWithoutResultBu
 
         if (AwayDayApplication.accessToken == null || !AwayDayApplication.accessToken.isSessionValid()) {
             Weibo mWeibo = Weibo.getInstance("3039931072", "https://api.weibo.com/oauth2/default.html", "statuses_to_me_read");
-//            SsoHandler weiboSsoHandler = new SsoHandler(this, mWeibo);
-//            weiboSsoHandler.authorize(new AuthDialogListener(this, paramFootprint));
             mWeibo.anthorize(this, new AuthDialogListener(this, paramFootprint));
         } else {
             ((Path) BeanContext.getInstance().getBean(Path.class)).shareFootprint(paramFootprint);

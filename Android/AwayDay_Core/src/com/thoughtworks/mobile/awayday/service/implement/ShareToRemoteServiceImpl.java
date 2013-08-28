@@ -4,11 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 import com.thoughtworks.mobile.awayday.AwayDayApplication;
+import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Footprint;
-import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.helper.BitmapHelper;
+import com.thoughtworks.mobile.awayday.listeners.OnShareFootprintListener;
 import com.thoughtworks.mobile.awayday.service.ShareToRemoteService;
+import com.thoughtworks.mobile.awayday.storage.BeanContext;
 import com.thoughtworks.mobile.awayday.utils.ActionStatus;
 import com.thoughtworks.mobile.awayday.utils.AppSettings;
 import com.thoughtworks.mobile.awayday.utils.StringUtils;
@@ -19,9 +22,10 @@ import com.weibo.sdk.android.net.HttpManager;
 import com.weibo.sdk.android.net.RequestListener;
 import org.json.JSONException;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
-public class ShareToRemoteServiceImpl implements ShareToRemoteService, RequestListener{
+public class ShareToRemoteServiceImpl implements ShareToRemoteService{
     private Context context;
 
     public ShareToRemoteServiceImpl(Context paramContext) {
@@ -54,18 +58,12 @@ public class ShareToRemoteServiceImpl implements ShareToRemoteService, RequestLi
         params.add("access_token", String.valueOf(AwayDayApplication.accessToken.getToken()));
         if (AppSettings.isSharedImageOn() && paramFootprint.imageUriString != null) {
 
-            Log.e("Send weibo", "image1 +" + paramFootprint.imageUriString);
-            Log.e("Send weibo", "image2 +" + paramFootprint.imageUri().getPath());
-            Log.e("Send weibo", "image3 +" + paramFootprint.imageUri().getEncodedPath());
-            Log.e("Send weibo", "image4 +" + paramFootprint.imageUri().getQuery());
             params.add("pic", paramFootprint.imageUri().getPath());
 
-            AsyncWeiboRunner.request(AppSettings.getWeiboImageApi(), params, "POST", this);
+            AsyncWeiboRunner.request(AppSettings.getWeiboImageApi(), params, "POST", BeanContext.getInstance().getBean(OnShareFootprintListener.class));
         } else {
-            AsyncWeiboRunner.request(AppSettings.getWeiboTextApi(), params, HttpManager.HTTPMETHOD_GET, this);
+            AsyncWeiboRunner.request(AppSettings.getWeiboTextApi(), params, "POST", BeanContext.getInstance().getBean(OnShareFootprintListener.class));
         }
-
-
     }
 
 
@@ -81,28 +79,4 @@ public class ShareToRemoteServiceImpl implements ShareToRemoteService, RequestLi
         return ActionStatus.SHARE_WITH_SERVER_ERROR;
     }
 
-    @Override
-    public void onComplete(String s) {
-        Log.e("Send weibo", s);
-    }
-
-    @Override
-    public void onComplete4binary(ByteArrayOutputStream byteArrayOutputStream) {
-        Log.e("Send weibo", "onComplete4binary");
-    }
-
-    @Override
-    public void onIOException(IOException e) {
-        Log.e("Send weibo","onIOException", e);
-    }
-
-    @Override
-    public void onError(WeiboException e) {
-        Log.e("Send weibo","onError", e);
-    }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.service.implement.ShareToRemoteServiceImpl
- * JD-Core Version:    0.6.2
- */

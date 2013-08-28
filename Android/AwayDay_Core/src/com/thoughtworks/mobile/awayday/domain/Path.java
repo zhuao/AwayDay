@@ -38,7 +38,7 @@ public class Path {
         }
     }
 
-    private void saveToLocal(Footprint paramFootprint) {
+    public void saveToLocal(Footprint paramFootprint) {
         TaskProvider.createSaveToLocalTask((SaveToLocalService) BeanContext.getInstance().getBean(SaveToLocalService.class), (OnSaveFootprintListener) BeanContext.getInstance().getBean(OnSaveFootprintListener.class)).execute(new Footprint[]{paramFootprint});
     }
 

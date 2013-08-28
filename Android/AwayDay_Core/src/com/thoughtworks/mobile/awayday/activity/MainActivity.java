@@ -113,7 +113,6 @@ public class MainActivity extends Activity implements AgendaItemActionClickedLis
     private void startShareActivity(Intent paramIntent) {
         paramIntent.setClass(this, ShareActivity.class);
         startActivity(paramIntent);
-        finish();
     }
 
     protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {

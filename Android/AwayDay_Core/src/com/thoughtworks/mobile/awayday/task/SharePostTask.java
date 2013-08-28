@@ -15,6 +15,7 @@ public class SharePostTask extends AsyncTask<Footprint, Void, Void> {
     public SharePostTask(ShareToRemoteService paramShareToRemoteService, OnShareFootprintListener paramOnShareFootprintListener) {
         this.shareService = paramShareToRemoteService;
         this.onShareFootprintListener = paramOnShareFootprintListener;
+        onShareFootprintListener.showFullScreenLoading();
     }
 
     protected Void doInBackground(Footprint[] paramArrayOfFootprint) {
@@ -24,13 +25,11 @@ public class SharePostTask extends AsyncTask<Footprint, Void, Void> {
     }
 
     protected void onPostExecute(Void paramVoid) {
-        if (this.shareResult == null)
+        onShareFootprintListener.dismissLoading();
+        if (this.shareResult == null) {
             return;
+        }
         this.onShareFootprintListener.onFootprintShared(this.footprint, this.shareResult);
+
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.task.SharePostTask
- * JD-Core Version:    0.6.2
- */

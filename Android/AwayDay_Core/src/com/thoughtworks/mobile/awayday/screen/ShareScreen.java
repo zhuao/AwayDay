@@ -20,8 +20,7 @@ import com.thoughtworks.mobile.awayday.utils.ViewUtils;
 
 import java.util.Calendar;
 
-public class ShareScreen extends RelativeLayout
-        implements View.OnClickListener {
+public class ShareScreen extends RelativeLayout implements View.OnClickListener {
     private ImageView backImageView;
     private Footprint footprint;
     private ScreenBackWithoutResultButtonClickedListener screenBackButtonClickedListener;
