@@ -15,7 +15,6 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "AFJSONRequestOperation.h"
-#import <Social/Social.h>
 
 #define text_length_limit   140
 #define tag_req_post_user_share 1001
@@ -65,7 +64,7 @@
 - (IBAction)sendButtonPressed:(id)sender {
 
     //to send the share
-    /*NSString *content = self.textView.text;
+    NSString *content = self.textView.text;
     if (content.length == 0 && self.userImage == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input something please" message:@"you need to input something or put a photo" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
@@ -78,8 +77,8 @@
         [self postWeiboWithText:messageToShare.text withImage:self.userImage];
     } else {
         [self postWeiboWithText:messageToShare.text];
-    }*/
-    [self shareToWeibo:self];
+    }
+//    [self shareToWeibo:self];
 }
 
 #pragma mark post weibo methods
@@ -155,8 +154,8 @@
 
 
     AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *urlRequest, NSHTTPURLResponse *response, id JSON) {
-        NSString *responseStr = [[NSString alloc] initWithData:JSON encoding:NSUTF8StringEncoding];
-        NSLog(@"Request Successful, response '%@'", responseStr);
+//        NSString *responseStr = [[NSString alloc] initWithData:JSON encoding:NSUTF8StringEncoding];
+//        NSLog(@"Request Successful, response '%@'", responseStr);
         [self requestFinished];
     } failure:^(NSURLRequest *urlRequest, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Request Failed, response '%@'", JSON);
@@ -325,10 +324,10 @@
     [self.textView setText:@""];
     [AppHelper removeInfoView:self.view];
     [AppHelper showInfoView:self.view withText:@"Share successfully" withLoading:NO];
-    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(removeInfoView) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(removeInfoView) userInfo:nil repeats:NO];
 
     [appDelegate showMenuView];
-    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self.navigationController selector:@selector(popViewControllerAnimated:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:1.5f target:self.navigationController selector:@selector(popViewControllerAnimated:) userInfo:nil repeats:NO];
 }
 
 - (void)requestFailed {
@@ -342,32 +341,32 @@
 }
 
 
-- (IBAction)shareToWeibo:(id)sender {
-    [self presentViewController:[self buildSLComposeVC] animated:YES completion:nil];
-}
+//- (IBAction)shareToWeibo:(id)sender {
+//    [self presentViewController:[self buildSLComposeVC] animated:YES completion:nil];
+//}
 
-- (SLComposeViewController *)buildSLComposeVC {
-    SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
-
-    [slComposerSheet setInitialText:[self buildWeiboText:self.textView.text]];
-    [slComposerSheet addImage:self.userImage];
-    [slComposerSheet addURL:[NSURL URLWithString:@"http://www.weibo.com/"]];
-    
-    [slComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
-        switch (result) {
-            case SLComposeViewControllerResultCancelled:
-                [self requestFailed];
-                break;
-            case SLComposeViewControllerResultDone:
-                [self requestFinished];
-                break;
-            default:
-                [self requestFailed];
-                break;
-        }
-    }];
-    
-    return slComposerSheet;
-}
+//- (SLComposeViewController *)buildSLComposeVC {
+//    SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
+//
+//    [slComposerSheet setInitialText:[self buildWeiboText:self.textView.text]];
+//    [slComposerSheet addImage:self.userImage];
+//    [slComposerSheet addURL:[NSURL URLWithString:@"http://www.weibo.com/"]];
+//    
+//    [slComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+//        switch (result) {
+//            case SLComposeViewControllerResultCancelled:
+//                [self requestFailed];
+//                break;
+//            case SLComposeViewControllerResultDone:
+//                [self requestFinished];
+//                break;
+//            default:
+//                [self requestFailed];
+//                break;
+//        }
+//    }];
+//    
+//    return slComposerSheet;
+//}
 
 @end

@@ -434,14 +434,12 @@
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
-//    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-//    if ([appDelegate.userState objectForKey:kUserWeiboTokenKey]) {
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    if ([appDelegate.userState objectForKey:kUserWeiboTokenKey]) {
         [self displayPostShareVC];
-//
-//    } else {
-//        [self authorizeWeibo];
-//    }
-    
+    } else {
+        [self authorizeWeibo];
+    }
 }
 
 - (void)authorizeWeibo {
