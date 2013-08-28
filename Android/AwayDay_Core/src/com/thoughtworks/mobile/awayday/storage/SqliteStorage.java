@@ -137,17 +137,11 @@ public class SqliteStorage implements LocalStorage {
 
     public void addAgendaData(Agenda paramAgenda) {
         try {
-            Log.d("addAgendaData", "111111");
             SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
-            Log.d("addAgendaData", "222222");
             addAgenda(localSQLiteDatabase, paramAgenda);
-            Log.d("addAgendaData", "333333");
             List<Session> localList = paramAgenda.getSessions();
-            Log.d("addAgendaData", "444444");
             addStatusToSessions(localList);
-            Log.d("addAgendaData", "555555");
             addSessions(localSQLiteDatabase, localList);
-            Log.d("addAgendaData", "666666");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -165,6 +159,7 @@ public class SqliteStorage implements LocalStorage {
             localSQLiteDatabase.beginTransaction();
             localSQLiteDatabase.delete("sessions", null, null);
             localSQLiteDatabase.delete("agendas", null, null);
+            localSQLiteDatabase.setTransactionSuccessful();
         } finally {
             localSQLiteDatabase.endTransaction();
             this.sqLiteHelper.close();

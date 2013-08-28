@@ -60,15 +60,16 @@ public class RemoteUpdateAgendaService
 
     private String getAgendasJSON() {
         String response = fetchJsonFromServer();
-        if (response == null) ;
-        for (String str2 = " no agendas returned from server"; ; str2 = response) {
-            Log.d("fetched agendas from server", str2);
-            if (response == null)
-                break;
-            FileUtils.saveFile(this.context, AGENDAS_FILE_NAME, response);
-            return response;
+        String logOutput = " no agendas returned from server";
+        if (response == null) {
+            Log.d("fetched agendas from server", logOutput);
+            return fetchJsonFromLocal();
         }
-        return fetchJsonFromLocal();
+        logOutput = response;
+        Log.d("fetched agendas from server", logOutput);
+        FileUtils.saveFile(this.context, AGENDAS_FILE_NAME, response);
+        return response;
+
     }
 
     private LocalStorage getLocalStorage() {
@@ -83,11 +84,11 @@ public class RemoteUpdateAgendaService
         }
     }
 
-    private List<Agenda> parseAgendas(String paramString) {
+    private List<Agenda> parseAgendas(String agendaList) {
         ArrayList localArrayList = new ArrayList();
-        if (paramString != null) ;
+        if (agendaList != null) ;
         try {
-            JSONArray localJSONArray1 = new JSONArray(paramString);
+            JSONArray localJSONArray1 = new JSONArray(agendaList);
             int i = localJSONArray1.length();
             for (int j = 0; j < i; j++) {
                 JSONObject localJSONObject1 = localJSONArray1.getJSONObject(j);
