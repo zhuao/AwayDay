@@ -1,10 +1,13 @@
+require 'uri'
 class DownloadController < ActionController::Base
 
   def download_app
     user_agent = request.env['HTTP_USER_AGENT']
     device_name = detect_mobile_device(user_agent)
     return redirect_to "/TW-Conference-2012-release.apk" if device_name == "android"
-    return redirect_to "itms-services://?action=download-manifest&url=http://106.120.75.116:8000/AwayDay.plist" if device_name == "ios"
+    # param = "?action=download-manifest&url=http://10.18.3.63:8000/AwayDay.plist"
+    # "itms-services://" + CGI.escape(param)
+    return redirect_to "/urlRedirect.html" if device_name == "ios"
     return redirect_to "/"
   end
 

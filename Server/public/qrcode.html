@@ -46,21 +46,10 @@
                 choe:"UTF-8",
                 chl:""
             };
+            // var val = "http://10.18.3.63:8000/download";
 
-
-//            var chl = [], title, val;
-//            var title = $.trim($(this).attr('id'));
-//            var val1 = $.trim($(this).val());
-//            alert(val);
-//            chl.push(title);
-//            chl.push(":");
-//            chl.push(val);
-//            chl.push("\n");
-//var val = "http://10.18.3.63:3000/download?username="+val1;
             var val = "http://106.120.75.116:8000/download";
-
             param.chl = val;
-
 
             var content = $.param(param);
             $("#qrcode").MyQRCode({
