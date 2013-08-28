@@ -162,7 +162,7 @@ public class SqliteStorage implements LocalStorage {
             localSQLiteDatabase.setTransactionSuccessful();
         } finally {
             localSQLiteDatabase.endTransaction();
-            this.sqLiteHelper.close();
+//            this.sqLiteHelper.close();
         }
     }
 
@@ -187,7 +187,7 @@ public class SqliteStorage implements LocalStorage {
             }
             localCursor.close();
         } finally {
-            this.sqLiteHelper.close();
+//            this.sqLiteHelper.close();
         }
     }
 
@@ -232,7 +232,7 @@ public class SqliteStorage implements LocalStorage {
             }
             localCursor.close();
         } finally {
-            this.sqLiteHelper.close();
+//            this.sqLiteHelper.close();
         }
     }
 }

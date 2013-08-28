@@ -117,7 +117,6 @@ public class ShareActivity extends Activity implements ScreenBackWithoutResultBu
         } else {
             ((Path) BeanContext.getInstance().getBean(Path.class)).shareFootprint(paramFootprint);
         }
-        finish();
     }
 
 }
