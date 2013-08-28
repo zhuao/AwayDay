@@ -4,7 +4,7 @@ class DownloadController < ActionController::Base
     user_agent = request.env['HTTP_USER_AGENT']
     device_name = detect_mobile_device(user_agent)
     return redirect_to "/TW-Conference-2012-release.apk" if device_name == "android"
-    return redirect_to "itms-services://?action=download-manifest&url=http://awayday.thoughtworkers.org/AwayDay2012.plist" if device_name == "ios"
+    return redirect_to "itms-services://?action=download-manifest&url=http://106.120.75.116:8000/AwayDay.plist" if device_name == "ios"
     return redirect_to "/"
   end
 
