@@ -7,7 +7,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)                                             
 Session.create(title:'Global keynote',speaker:'',start: '2013-08-31 08:45:00',end:'2013-08-31 09:15:00',location:'all',date:'2013-08-31',description:'')
-Session.create(title:'China keynote',speaker:'',start: '2013-08-31 09:15:00',end:'2013-08-31 10:40:00',location:'all',date:'2013-08-31',description:'[以Global South为中心多元化发展] 1、黄亮和肖然的咨询团队 2、米高产品团队分享. [持续为软件行业和社会提供颠覆性的思考和创新方法] 1、熊子川在社会活动上的思路 2、八叉innovation的故事 3、王哲 关于Mobile Lab以解决方案为中心来做项目的分享. [深化业务关联性] 1、马强运营方面的分享 2、贾阳的分享. 推进和驱动我们自身对ThoughtWorks的领导，增强影响力.1、郑烨的Moco 2、BQConf分享 3、龙军组织的技术大赛分享. [P3相关] 1、吴长城来讲下newclass 2、王彪关于P3和义梦中国的分享 3、心声团队分享')
+Session.create(title:'China keynote',speaker:'',start: '2013-08-31 09:15:00',end:'2013-08-31 10:40:00',location:'all',date:'2013-08-31',description:'[以Global South为中心多元化发展] 1、黄亮和肖然的咨询团队 2、米高产品团队分享. [持续为软件行业和社会提供颠覆性的思考和创新方法] 1、熊子川在社会活动上的思路 2、八叉innovation的故事 3、王哲 关于Mobile Lab以解决方案为中心来做项目的分享. [深化业务关联性] 1、马强运营方面的分享 2、贾阳的分享. [推进和驱动我们自身对ThoughtWorks的领导，增强影响力] 1、郑烨的Moco 2、BQConf分享 3、龙军组织的技术大赛分享. [P3相关] 1、吴长城来讲下newclass 2、王彪关于P3和义梦中国的分享 3、心声团队分享')
 Session.create(title:'Roy keynote',speaker:'Roy',start: '2013-08-31 11:00:00',end:'2013-08-31 12:15:00',location:'all',date:'2013-08-31',description:'')
 
 Session.create(title:'打造办公室——非OP视角',speaker:'Zheng Ye',start: '2013-08-31 13:30:00',end:'2013-08-31 14:10:00',location:'ROOM 1',date:'2013-08-31',description:'你可知道：以“人才培养基地”著称的西安办公室，当年的窘境是“一大堆毕业生可能影响交付”；你可知道，2012年的成都办公室还是一个“沉闷”所在，2013年就成了“有创新，无底线，P123都很牛”的地方。作为西安成都两个办公室建设的参与者，我想分享一下从我——一个非Office Principle——的视角看到的一些东西，近几年办公室建设的一些心得，也许还会谈到非职权影响力。')
