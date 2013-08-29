@@ -69,7 +69,9 @@ class SessionsController < ApplicationController
   # PUT /sessions/1.json
   def update
     @session = Session.find(params[:id])
-    
+    p "==="
+    p @session
+
     respond_to do |format|
       if @session.update_attributes(params[:session])
         push_response_message = sendUpdatedMessageToClient @session
@@ -86,7 +88,7 @@ class SessionsController < ApplicationController
   def sendUpdatedMessageToClient(modified_session)
     uri = URI.parse "http://api.jpush.cn:8800/sendmsg/v2/sendmsg"
 
-    send_no = Integer((DateTime.now + 11.days).strftime("%d%H%M%S"))
+    send_no = Integer((DateTime.now - 11.days).strftime("%d%H%M%S"))
     receiver_type = 4 # broadcast to all users
     msg_type = 1 # message type is notification, not custom message
     master_key = "a3d0da68dc9d969fed910896"
