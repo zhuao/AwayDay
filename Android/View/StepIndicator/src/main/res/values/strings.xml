@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="step_bar_step_over_indicator_tag">Step Over</string>
+    <string name="step_bar_step_in_indicator_tag">Step In</string>
+
+</resources>

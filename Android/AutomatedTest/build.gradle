@@ -1,0 +1,16 @@
+task functionalTests(type:Exec, dependsOn: ['bundleInstall']) {
+    description 'Run Calabash Tests against specified apk (-PapkPath)'
+    group JavaBasePlugin.VERIFICATION_GROUP
+
+
+    def appProject = project(":AwayDay")
+    def targetPath = "$appProject.projectDir.path/build/outputs/apk/$appProject.name-debug.apk"
+
+    executable 'calabash-android'
+    args "run", "$targetPath", "--tags ~@pending"
+}
+
+task bundleInstall(type:Exec) {
+    executable 'bundle'
+    args 'install'
+}

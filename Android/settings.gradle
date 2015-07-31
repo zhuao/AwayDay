@@ -1,0 +1,3 @@
+include ':Base', ':AutomatedTest'
+include ':AwayDay'
+include ':View:StepIndicator'

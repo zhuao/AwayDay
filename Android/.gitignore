@@ -1,26 +1,15 @@
-# built application files
-*.apk
-*.ap_
-
-# files for the dex VM
-*.dex
-
-# Java class files
-*.class
-
-# generated files
-bin/
-gen/
-
-# Local configuration file (sdk path, etc)
-local.properties
-
-#Intellij Idea related files
 .idea/
-*.iml
-out/
 .DS_Store
-
-#Helpers
-bootstrap/EmulatorBuilder.jar
-
+**/.DS_Store
+**/.gitignore
+.sonar/
+**/*.iml
+**/**/*.iml
+*.iml
+build/
+**/build/
+Base/src/test/java/android/
+local.properties
+**/local.properties
+.gradle
+AutomatedTest/test_servers/

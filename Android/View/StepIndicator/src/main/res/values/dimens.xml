@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="font_size_small">12sp</dimen>
+    <dimen name="steps_text_padding">7dp</dimen>
+    <dimen name="steps_background_line_height">5dp</dimen>
+    <dimen name="steps_circle_indicator_diameter">31dp</dimen>
+    <dimen name="steps_Indicator_container_margin">15dp</dimen>
+    <dimen name="steps_bar_first_text_padding_left">6dp</dimen>
+    <dimen name="steps_bar_height">45dp</dimen>
+</resources>

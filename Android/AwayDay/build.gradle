@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile project(':Base')
+    compile project(':View:StepIndicator')
+    compile fileTree("libs")
+
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'junit:junit:4.12'
+    testCompile ("com.squareup.assertj:assertj-android:1.0.0") {
+        exclude group: 'com.android.support', module:'support-annotations'
+    }
+    testCompile 'org.robolectric:robolectric:3.0-rc3'
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 22
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("awayday.keystore")
+            storePassword "r0ys1ngh4m"
+            keyAlias "awayday"
+            keyPassword "r0ys1ngh4m"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+            signingConfig signingConfigs.release
+        }
+    }
+}

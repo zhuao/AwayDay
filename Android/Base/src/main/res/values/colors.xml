@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="app_primary_color">@color/blue_500</color>
+    <color name="app_status_bar_color">@color/blue_700</color>
+    <color name="app_text_primary_color">@android:color/white</color>
+    <color name="app_background_color">@android:color/transparent</color>
+
+    <color name="blue_500">#2196F3</color>
+    <color name="blue_700">#1976D2</color>
+
+</resources>

@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+
+    compile fileTree("libs")
+
+    compile "com.android.support:support-v4:22.2.0"
+    compile "com.android.support:appcompat-v7:22.2.0"
+    compile "com.android.support:design:22.2.0"
+
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'junit:junit:4.12'
+    testCompile ("com.squareup.assertj:assertj-android:1.0.0") {
+        exclude group: 'com.android.support', module:'support-annotations'
+    }
+    testCompile 'org.robolectric:robolectric:3.0-rc3'
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 21
+    }
+}
+
+def package_namespace = "me.zhuao.android.sketch"
+def package_namespace_path = package_namespace.replaceAll("\\.", "/")
+
+afterEvaluate { project ->
+    android.libraryVariants.each { variant ->
+        // workaround for missing R class for aar dependencies
+        def copyTaskName = "copy${variant.name.capitalize()}AppCompat"
+        task(copyTaskName, type:Copy) {
+            dependsOn "process${variant.name.capitalize()}Resources"
+            from { "build/generated/source/r/${variant.name}/$package_namespace_path" }
+//            into { "build/generated/source/r/${variant.name}/android/support/v7/appcompat" }
+            into { "src/test/java/android/support/v7/appcompat" }
+            include 'R.java'
+            filter { line -> line.contains("package ${package_namespace};") ? 'package android.support.v7.appcompat;' : line }
+            outputs.upToDateWhen { false }
+        }
+        System.out.println("adding ${copyTaskName}")
+        tasks.getByName("compile${variant.name.capitalize()}UnitTestJava") dependsOn copyTaskName
+    }
+}

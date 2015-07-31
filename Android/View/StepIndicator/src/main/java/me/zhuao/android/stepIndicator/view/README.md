@@ -1,0 +1,1 @@
+emulator -avd Nexus5 -no-boot-anim -no-snapshot-load -no-snapshot-save -qemu -m 2048 -enable-kvm

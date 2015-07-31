@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text"/>
+
+    <style name="Text.Small">
+        <item name="android:textSize">@dimen/font_size_small</item>
+    </style>
+
+    <style name="Text.Small.White">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

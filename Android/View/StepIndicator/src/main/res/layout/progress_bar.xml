@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/steps_background">
+
+    <LinearLayout
+        android:id="@+id/steps_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/steps_bar_height"
+        android:layout_marginTop="@dimen/steps_bar_height"
+        android:layout_marginLeft="@dimen/steps_Indicator_container_margin"
+        android:paddingRight="@dimen/steps_text_padding"
+        android:paddingLeft="@dimen/steps_bar_first_text_padding_left"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Text.Small.White" />
+
+        <TextView
+            style="@style/Text.Small.White"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Text.Small.White" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Text.Small.White" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/steps_bar_height"
+        android:background="@color/steps_background"
+        android:paddingLeft="@dimen/steps_Indicator_container_margin"
+        android:paddingRight="@dimen/steps_Indicator_container_margin">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/steps_background_line_height"
+            android:layout_marginLeft="@dimen/steps_circle_indicator_diameter"
+            android:layout_marginRight="@dimen/steps_circle_indicator_diameter"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/steps_background_line" />
+
+        <View
+            android:id="@+id/steps_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/steps_background_line_height"
+            android:layout_marginLeft="@dimen/steps_circle_indicator_diameter"
+            android:layout_marginRight="@dimen/steps_circle_indicator_diameter"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/steps_progress_line"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/steps_bar_height">
+                <ImageView
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:scaleType="center"
+                    android:src="@drawable/steps_cycle_background" />
+                <RelativeLayout
+                    android:id="@+id/circle_step_1"
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:src="@drawable/steps_bar_completed_indicator"
+                        android:tag="@string/step_bar_step_over_indicator_tag"
+                        android:visibility="gone"/>
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:tag="@string/step_bar_step_in_indicator_tag"
+                        android:src="@drawable/steps_bar_selected_icon"/>
+                </RelativeLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/steps_bar_height">
+
+                <ImageView
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:scaleType="center"
+                    android:src="@drawable/steps_cycle_background" />
+
+                <RelativeLayout
+                    android:id="@+id/circle_step_2"
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:src="@drawable/steps_bar_completed_indicator"
+                        android:tag="@string/step_bar_step_over_indicator_tag"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:src="@drawable/steps_bar_selected_icon"
+                        android:tag="@string/step_bar_step_in_indicator_tag"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:id="@+id/step_3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/steps_bar_height">
+                <ImageView
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:scaleType="center"
+                    android:src="@drawable/steps_cycle_background" />
+                <RelativeLayout
+                    android:id="@+id/circle_step_3"
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:src="@drawable/steps_bar_completed_indicator"
+                        android:tag="@string/step_bar_step_over_indicator_tag"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:src="@drawable/steps_bar_selected_icon"
+                        android:tag="@string/step_bar_step_in_indicator_tag"
+                        android:visibility="gone"/>
+                </RelativeLayout>
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="@dimen/steps_bar_height"
+                android:layout_height="@dimen/steps_bar_height">
+
+                <ImageView
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:scaleType="center"
+                    android:src="@drawable/steps_cycle_background" />
+
+                <RelativeLayout
+                    android:id="@+id/circle_step_4"
+                    android:layout_width="@dimen/steps_bar_height"
+                    android:layout_height="@dimen/steps_bar_height"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:src="@drawable/steps_bar_completed_indicator"
+                        android:tag="@string/step_bar_step_over_indicator_tag"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/steps_circle_indicator_diameter"
+                        android:layout_height="@dimen/steps_circle_indicator_diameter"
+                        android:src="@drawable/steps_bar_selected_icon"
+                        android:tag="@string/step_bar_step_in_indicator_tag"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

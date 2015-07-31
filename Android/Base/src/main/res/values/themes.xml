@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="App" />
+    <style name="App.Theme" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/app_primary_color</item>
+        <item name="colorPrimaryDark">@color/app_status_bar_color</item>
+        <item name="android:textColorPrimary">@color/app_text_primary_color</item>
+        <item name="android:background">@color/app_background_color</item>
+        <item name="drawerArrowStyle">@style/drawerArrowToggleStyle</item>
+    </style>
+
+    <style name="drawerArrowToggleStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/app_text_primary_color</item>
+    </style>
+</resources>
