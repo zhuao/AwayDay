@@ -62,8 +62,3 @@ public class AgendaPresenter implements PullToRefreshListener, AgendaDataReceive
         }
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.presenter.AgendaPresenter
- * JD-Core Version:    0.6.2
- */

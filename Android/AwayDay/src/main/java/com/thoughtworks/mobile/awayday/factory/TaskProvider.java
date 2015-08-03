@@ -43,8 +43,3 @@ public class TaskProvider {
         return new UpdateAgendaTask(paramUpdateAgendaService, paramAgendaDataReceiver);
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.factory.TaskProvider
- * JD-Core Version:    0.6.2
- */
