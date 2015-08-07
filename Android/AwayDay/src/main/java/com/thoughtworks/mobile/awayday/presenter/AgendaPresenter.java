@@ -1,5 +1,7 @@
 package com.thoughtworks.mobile.awayday.presenter;
 
+import android.support.v4.widget.SwipeRefreshLayout;
+
 import com.thoughtworks.mobile.awayday.domain.Agenda;
 import com.thoughtworks.mobile.awayday.domain.Session;
 import com.thoughtworks.mobile.awayday.factory.TaskProvider;
@@ -16,11 +18,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class AgendaPresenter implements PullToRefreshListener, AgendaDataReceiver, AgendaItemViewStateRecorder {
+public class AgendaPresenter implements PullToRefreshListener, SwipeRefreshLayout.OnRefreshListener, AgendaDataReceiver, AgendaItemViewStateRecorder {
     private List<Agenda> agendaList;
     private AgendaScreen agendaScreen;
     private Map<Integer, Integer> itemViewStateMap;
-    private PullToRefreshCallback refreshCallback;
+    private SwipeRefreshLayout swipeRefreshCallback;
 
     public AgendaPresenter(AgendaScreen paramAgendaScreen) {
         this.agendaScreen = paramAgendaScreen;
@@ -36,8 +38,9 @@ public class AgendaPresenter implements PullToRefreshListener, AgendaDataReceive
     public void onReceivedAgenda(List<Agenda> paramList) {
         this.agendaList = paramList;
         this.agendaScreen.updateWithAgenda(paramList);
-        if (this.refreshCallback != null)
-            this.refreshCallback.onRefreshCompletion();
+        if (swipeRefreshCallback != null) {
+            swipeRefreshCallback.setRefreshing(false);
+        }
     }
 
     public void onRefresh() {
@@ -49,8 +52,8 @@ public class AgendaPresenter implements PullToRefreshListener, AgendaDataReceive
         this.itemViewStateMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     }
 
-    public void setRefreshAgendaCallback(PullToRefreshCallback paramPullToRefreshCallback) {
-        this.refreshCallback = paramPullToRefreshCallback;
+    public void setRefreshAgendaCallback(SwipeRefreshLayout paramPullToRefreshCallback) {
+        this.swipeRefreshCallback = paramPullToRefreshCallback;
     }
 
     public void setRemindForSession(int paramInt, boolean paramBoolean) {
