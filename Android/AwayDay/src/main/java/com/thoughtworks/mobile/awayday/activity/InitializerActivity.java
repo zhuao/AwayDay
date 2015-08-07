@@ -3,11 +3,12 @@ package com.thoughtworks.mobile.awayday.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import cn.jpush.android.api.InstrumentedActivity;
+
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.factory.BeanRegister;
@@ -15,7 +16,7 @@ import com.thoughtworks.mobile.awayday.listeners.OnSettingsModifyActionListener;
 import com.thoughtworks.mobile.awayday.screen.InitializerScreen;
 import com.thoughtworks.mobile.awayday.utils.StringUtils;
 
-public class InitializerActivity extends InstrumentedActivity implements OnSettingsModifyActionListener {
+public class InitializerActivity extends AppCompatActivity implements OnSettingsModifyActionListener {
     private InitializerScreen initializerScreen;
     private ImageView logoScreen;
 
