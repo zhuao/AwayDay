@@ -1,96 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest android:versionCode="1" android:versionName="2013"
-          package="com.thoughtworks.mobile.awayday"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:label="@string/app_name"
-                 android:icon="@drawable/icon"
-                 android:name=".AwayDayApplication">
-        <activity android:theme="@style/App.Theme" android:label="@string/app_name"
-                  android:name=".activity.InitializerActivity" android:screenOrientation="portrait"
-                  android:configChanges="keyboard|keyboardHidden" android:windowSoftInputMode="adjustResize"
-                  android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity android:theme="@android:style/Theme.NoTitleBar" android:label="@string/app_name"
-                  android:name=".activity.MainActivity" android:screenOrientation="portrait"
-                  android:configChanges="keyboard|keyboardHidden|orientation"
-                  android:windowSoftInputMode="adjustResize"/>
-        <activity android:theme="@android:style/Theme.NoTitleBar" android:label="@string/app_name"
-                  android:name=".activity.ReminderActivity" android:screenOrientation="portrait"/>
-        <activity android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"
-                  android:name=".activity.AlarmAlertActivity" android:taskAffinity=":AlarmAlert"
-                  android:excludeFromRecents="true" android:launchMode="singleTask" android:screenOrientation="nosensor"
-                  android:configChanges="keyboard|keyboardHidden|orientation"/>
-        <activity android:theme="@android:style/Theme.NoTitleBar" android:name=".activity.ShareActivity"
-                  android:screenOrientation="portrait"/>
-        <receiver android:name=".service.AlarmReceiver" android:process=":remote"/>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thoughtworks.mobile.awayday"
+    android:versionCode="1"
+    android:versionName="2013">
 
-
-        <service
-                android:name="cn.jpush.android.service.PushService"
-                android:enabled="true"
-                android:exported="false" >
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTER" />
-                <action android:name="cn.jpush.android.intent.REPORT" />
-                <action android:name="cn.jpush.android.intent.PushService" />
-                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
-            </intent-filter>
-        </service>
-
-        <receiver android:name="cn.jpush.android.service.PushReceiver"
-                android:enabled="true" >
-            <intent-filter android:priority="1000">
-                                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--since 1.3.5 -->
-                                <category android:name="com.thoughtworks.mobile.awayday" />
-            </intent-filter>
-            <intent-filter>
-                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
-                <action android:name="android.intent.action.USER_PRESENT"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED"/>
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
+    <application
+        android:name=".AwayDayApplication"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/App.Theme">
         <activity
-                android:name="cn.jpush.android.ui.PushActivity"
-                android:theme="@android:style/Theme.Translucent.NoTitleBar"
-                android:configChanges="orientation|keyboardHidden" >
+            android:name=".activity.InitializerActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
-                <action android:name="cn.jpush.android.ui.PushActivity" />
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="com.thoughtworks.mobile.awayday" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service
-                android:name="cn.jpush.android.service.DownloadService"
-                android:enabled="true"
-                android:exported="false" >
-        </service>
-        <!-- Required SDK-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
-        <!-- Required. For publish channel feature -->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="1de28e61f1ec10e00c32bb5a"/>
-        </application>
-    <supports-screens android:anyDensity="true" android:smallScreens="false" android:normalScreens="true"
-                      android:largeScreens="true"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <permission android:name="com.thoughtworks.mobile.awayday.permission.JPUSH_MESSAGE" android:protectionLevel="signature"/>
-    <uses-permission android:name="com.thoughtworks.mobile.awayday.permission.JPUSH_MESSAGE"/>
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.ReminderActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AlarmAlertActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
+            android:taskAffinity=":AlarmAlert"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity
+            android:name=".activity.ShareActivity"
+            android:screenOrientation="portrait" />
+
+        <receiver
+            android:name=".service.AlarmReceiver"
+            android:process=":remote" />
+
+
+    </application>
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="false" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <permission
+        android:name="com.thoughtworks.mobile.awayday.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.thoughtworks.mobile.awayday.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 

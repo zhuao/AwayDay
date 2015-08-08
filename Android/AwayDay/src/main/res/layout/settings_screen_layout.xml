@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@color/white"
-              android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="25.0sp" android:typeface="sans" android:textColor="@color/black"
-              android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:layout_marginBottom="15.0dip" android:text="I am:"/>
-    <EditText android:textSize="18.0sp" android:typeface="sans" android:textColor="@color/black"
-              android:id="@+id/settings_username_text" android:background="@drawable/bg_edit_text"
-              android:layout_width="fill_parent" android:layout_height="50.0dip" android:singleLine="true"/>
-    <ImageView android:layout_gravity="right" android:id="@+id/settings_modify_btn"
-               android:background="@android:color/transparent" android:layout_width="150.0dip"
-               android:layout_height="46.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/save"/>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingLeft="20.0dip"
+    android:paddingRight="20.0dip">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15.0dip"
+        android:text="I am:"
+        android:textColor="@color/black"
+        android:textSize="25.0sp"
+        android:typeface="sans" />
+
+    <EditText
+        android:id="@+id/settings_username_text"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:background="@drawable/bg_edit_text"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="18.0sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/settings_modify_btn"
+        android:layout_width="150.0dip"
+        android:layout_height="46.0dip"
+        android:layout_gravity="right"
+        android:layout_marginTop="10.0dip"
+        android:background="@android:color/transparent"
+        android:src="@drawable/save" />
 </LinearLayout>
