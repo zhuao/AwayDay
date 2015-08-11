@@ -9,8 +9,3 @@ public abstract interface AgendaItemActionClickedListener {
 
     public abstract void onShareActionClicked(Session paramSession);
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.listeners.AgendaItemActionClickedListener
- * JD-Core Version:    0.6.2
- */

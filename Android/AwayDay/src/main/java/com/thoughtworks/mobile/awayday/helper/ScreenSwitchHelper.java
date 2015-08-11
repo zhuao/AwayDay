@@ -1,43 +1,51 @@
 package com.thoughtworks.mobile.awayday.helper;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.view.View;
+
+import com.thoughtworks.mobile.awayday.R;
+import com.thoughtworks.mobile.awayday.activity.AgendaFragment;
+import com.thoughtworks.mobile.awayday.activity.MainActivity;
+import com.thoughtworks.mobile.awayday.activity.PathFragment;
+import com.thoughtworks.mobile.awayday.activity.SettingFragment;
 import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.screen.AgendaScreen;
 import com.thoughtworks.mobile.awayday.screen.PathScreen;
 import com.thoughtworks.mobile.awayday.screen.SettingScreen;
 
 public class ScreenSwitchHelper {
-    private AgendaScreen agendaScreen;
-    private PathScreen pathScreen;
-    private SettingScreen settingScreen;
+    private final AgendaFragment agendaFragement;
+    private final FragmentManager fragmentManager;
+    private PathFragment pathFragment;
+    private SettingFragment settingFragement;
 
-    public ScreenSwitchHelper(AgendaScreen paramAgendaScreen, PathScreen paramPathScreen, SettingScreen paramSettingScreen) {
-        this.agendaScreen = paramAgendaScreen;
-        this.pathScreen = paramPathScreen;
-        this.settingScreen = paramSettingScreen;
+    public ScreenSwitchHelper(MainActivity mainActivity, AgendaFragment agendaFragment, PathFragment pathFragment, SettingFragment settingFragment) {
+        fragmentManager = mainActivity.getFragmentManager();
+        this.agendaFragement = agendaFragment;
+        this.pathFragment = pathFragment;
+        this.settingFragement = settingFragment;
     }
 
     public void switchToAgendaScreen() {
-        this.agendaScreen.setVisibility(View.VISIBLE);
-        this.pathScreen.setVisibility(View.GONE);
-        this.settingScreen.setVisibility(View.GONE);
+        fragmentManager.popBackStack();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.screen_container, agendaFragement);
+        fragmentTransaction.commit();
     }
 
     public void switchToPathScreen() {
-        this.agendaScreen.setVisibility(View.GONE);
-        this.pathScreen.setVisibility(View.VISIBLE);
-        this.settingScreen.setVisibility(View.GONE);
+        fragmentManager.popBackStack();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.screen_container, pathFragment);
+        fragmentTransaction.commit();
     }
 
     public void switchToSettingsScreen() {
-        this.settingScreen.setUserName(Settings.getSettings().getUserName());
-        this.agendaScreen.setVisibility(View.GONE);
-        this.pathScreen.setVisibility(View.GONE);
-        this.settingScreen.setVisibility(View.VISIBLE);
+        fragmentManager.popBackStack();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.screen_container, settingFragement);
+        fragmentTransaction.commit();
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.helper.ScreenSwitchHelper
- * JD-Core Version:    0.6.2
- */

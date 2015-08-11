@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@+id/screen_container" android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-        <com.thoughtworks.mobile.awayday.screen.AgendaScreen android:id="@+id/agenda_screen"
-                                                             android:layout_width="fill_parent"
-                                                             android:layout_height="fill_parent"/>
-        <com.thoughtworks.mobile.awayday.screen.PathScreen android:id="@+id/path_screen" android:visibility="gone"
-                                                           android:layout_width="fill_parent"
-                                                           android:layout_height="fill_parent"/>
-        <com.thoughtworks.mobile.awayday.screen.SettingScreen android:id="@+id/settings_screen" android:visibility="gone"
-                                                              android:layout_width="fill_parent"
-                                                              android:layout_height="fill_parent"/>
-    </RelativeLayout>
-    <com.thoughtworks.mobile.awayday.components.NavigationMenu android:id="@+id/navigation_menu"
-                                                               android:layout_width="fill_parent"
-                                                               android:layout_height="wrap_content"
-                                                               android:layout_alignParentBottom="true"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <fragment
+        android:id="@+id/screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.thoughtworks.mobile.awayday.activity.AgendaFragment"/>
+
+    <com.thoughtworks.mobile.awayday.components.NavigationMenu
+        android:id="@+id/navigation_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

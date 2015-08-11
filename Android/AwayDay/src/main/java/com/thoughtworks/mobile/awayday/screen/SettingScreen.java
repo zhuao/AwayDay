@@ -50,7 +50,7 @@ public class SettingScreen extends LinearLayout {
     }
 
     private void initUI() {
-        addView((ViewGroup) ((LayoutInflater) getContext().getSystemService("layout_inflater")).inflate(R.layout.settings_screen_layout, this, false));
+        inflate(getContext(), R.layout.settings_screen_layout, this);
         this.userNameTextView = ((EditText) findViewById(R.id.settings_username_text));
         this.modifyTextView = ((ImageView) findViewById(R.id.settings_modify_btn));
     }
@@ -69,8 +69,3 @@ public class SettingScreen extends LinearLayout {
         this.userNameTextView.setSelection(this.userNameTextView.getText().length());
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.screen.SettingScreen
- * JD-Core Version:    0.6.2
- */

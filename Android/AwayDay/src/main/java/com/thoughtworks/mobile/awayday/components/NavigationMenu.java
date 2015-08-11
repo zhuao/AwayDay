@@ -2,13 +2,12 @@ package com.thoughtworks.mobile.awayday.components;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.helper.ScreenSwitchHelper;
 import com.thoughtworks.mobile.awayday.listeners.NavigateCommand;
@@ -45,7 +44,7 @@ public class NavigationMenu extends LinearLayout
     }
 
     private void hideMenu() {
-        if (this.content.getVisibility() == 8)
+        if (this.content.getVisibility() == GONE)
             return;
         startAnimation(this.translateOutAnimation);
     }
@@ -59,7 +58,7 @@ public class NavigationMenu extends LinearLayout
         this.translateOutAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.translate_out);
         this.translateOutAnimation.setAnimationListener(new Animation.AnimationListener() {
             public void onAnimationEnd(Animation paramAnonymousAnimation) {
-                NavigationMenu.this.content.setVisibility(8);
+                NavigationMenu.this.content.setVisibility(GONE);
             }
 
             public void onAnimationRepeat(Animation paramAnonymousAnimation) {
@@ -82,11 +81,11 @@ public class NavigationMenu extends LinearLayout
     }
 
     private void initUi() {
-        addView((ViewGroup) ((LayoutInflater) getContext().getSystemService("layout_inflater")).inflate(R.layout.navigation_menu, this, false));
+        inflate(getContext(), R.layout.navigation_menu, this);
         this.agendaItem = ((NavigationMenuItem) findViewById(R.id.menu_item_agenda));
         this.handler = ((LinearLayout) findViewById(R.id.sliding_drawer_handler));
         this.content = ((LinearLayout) findViewById(R.id.sliding_drawer_content));
-        this.content.setVisibility(8);
+        this.content.setVisibility(GONE);
     }
 
     private void performClickItem(NavigationMenuItem paramNavigationMenuItem, NavigateCommand paramNavigateCommand) {
@@ -108,12 +107,12 @@ public class NavigationMenu extends LinearLayout
     }
 
     private void showMenu() {
-        this.content.setVisibility(0);
+        this.content.setVisibility(View.VISIBLE);
         startAnimation(this.translateInAnimation);
     }
 
     private void switchContent() {
-        if (this.content.getVisibility() == 8) {
+        if (this.content.getVisibility() == View.GONE) {
             showMenu();
             return;
         }
@@ -150,8 +149,3 @@ public class NavigationMenu extends LinearLayout
         this.screenSwitchHelper = paramScreenSwitchHelper;
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.components.NavigationMenu
- * JD-Core Version:    0.6.2
- */
