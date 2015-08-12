@@ -1,19 +1,13 @@
 package com.thoughtworks.mobile.awayday.helper;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.view.View;
 
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.activity.AgendaFragment;
 import com.thoughtworks.mobile.awayday.activity.MainActivity;
 import com.thoughtworks.mobile.awayday.activity.PathFragment;
 import com.thoughtworks.mobile.awayday.activity.SettingFragment;
-import com.thoughtworks.mobile.awayday.domain.Settings;
-import com.thoughtworks.mobile.awayday.screen.AgendaScreen;
-import com.thoughtworks.mobile.awayday.screen.PathScreen;
-import com.thoughtworks.mobile.awayday.screen.SettingScreen;
 
 public class ScreenSwitchHelper {
     private final AgendaFragment agendaFragement;

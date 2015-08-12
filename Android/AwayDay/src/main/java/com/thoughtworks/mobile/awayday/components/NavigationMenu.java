@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.helper.ScreenSwitchHelper;
 import com.thoughtworks.mobile.awayday.listeners.NavigateCommand;
+import com.thoughtworks.mobile.awayday.listeners.NavigationListener;
 import com.thoughtworks.mobile.awayday.listeners.NavigationMenuItemListener;
 import com.thoughtworks.mobile.awayday.utils.ViewUtils;
 
@@ -21,9 +22,9 @@ public class NavigationMenu extends LinearLayout
     private NavigationMenuItem currentItem;
     private LinearLayout handler;
     private NavigationMenuItem lastClickedItem;
-    private ScreenSwitchHelper screenSwitchHelper;
     private Animation translateInAnimation;
     private Animation translateOutAnimation;
+    private NavigationListener navigationListener;
 
     public NavigationMenu(Context paramContext, AttributeSet paramAttributeSet) {
         super(paramContext, paramAttributeSet);
@@ -120,8 +121,9 @@ public class NavigationMenu extends LinearLayout
     }
 
     private void switchScreen(NavigateCommand paramNavigateCommand) {
-        if (this.screenSwitchHelper != null)
-            paramNavigateCommand.execute(this.screenSwitchHelper);
+        if (navigationListener != null) {
+            navigationListener.switchTo(paramNavigateCommand);
+        }
     }
 
     public void activeLastItem() {
@@ -145,7 +147,7 @@ public class NavigationMenu extends LinearLayout
         performClickItem(this.agendaItem, this.agendaItem.getNavigateAction());
     }
 
-    public void setScreenSwitchHelper(ScreenSwitchHelper paramScreenSwitchHelper) {
-        this.screenSwitchHelper = paramScreenSwitchHelper;
+    public void setNavigationListener(NavigationListener navigationListener) {
+        this.navigationListener = navigationListener;
     }
 }

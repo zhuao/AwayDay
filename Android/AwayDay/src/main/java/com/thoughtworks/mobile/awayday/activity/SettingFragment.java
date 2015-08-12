@@ -16,12 +16,10 @@ import com.thoughtworks.mobile.awayday.screen.SettingScreen;
 public class SettingFragment extends Fragment {
 
     private SettingScreen settingScreen;
-    private NavigationMenu navigationMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        navigationMenu = ((NavigationMenu) savedInstanceState.getSerializable("1234"));
     }
 
     @Nullable
@@ -34,8 +32,7 @@ public class SettingFragment extends Fragment {
     }
 
     private void initSettings() {
-        SettingsPresenter localSettingsPresenter = new SettingsPresenter(this.settingScreen, navigationMenu);
+        SettingsPresenter localSettingsPresenter = new SettingsPresenter(this.settingScreen);
         localSettingsPresenter.initialize(Settings.getSettings().getUserName());
-        this.settingScreen.setOnSettingsModifyActionListener(localSettingsPresenter);
     }
 }

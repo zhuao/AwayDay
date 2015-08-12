@@ -12,11 +12,10 @@ import android.widget.ImageView;
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Settings;
 import com.thoughtworks.mobile.awayday.factory.BeanRegister;
-import com.thoughtworks.mobile.awayday.listeners.OnSettingsModifyActionListener;
 import com.thoughtworks.mobile.awayday.screen.InitializerScreen;
 import com.thoughtworks.mobile.awayday.utils.StringUtils;
 
-public class InitializerActivity extends AppCompatActivity implements OnSettingsModifyActionListener {
+public class InitializerActivity extends AppCompatActivity {
     private InitializerScreen initializerScreen;
     private ImageView logoScreen;
 
@@ -29,7 +28,6 @@ public class InitializerActivity extends AppCompatActivity implements OnSettings
     }
 
     private void initListener() {
-        this.initializerScreen.setOnSettingsModifyActionListener(this);
     }
 
     private void initUI() {
@@ -84,7 +82,4 @@ public class InitializerActivity extends AppCompatActivity implements OnSettings
         showLogoScreen();
     }
 
-    public void onSettingsModifyAction() {
-        startMainActivity();
-    }
 }

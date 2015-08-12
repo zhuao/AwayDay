@@ -18,8 +18,7 @@ public class SettingsNavigationMenuItem extends NavigationMenuItem {
         return true;
     }
 
-    private class NavigateToSettingsCommand
-            implements NavigateCommand {
+    private class NavigateToSettingsCommand implements NavigateCommand {
         private NavigateToSettingsCommand() {
         }
 
@@ -28,8 +27,3 @@ public class SettingsNavigationMenuItem extends NavigationMenuItem {
         }
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.components.SettingsNavigationMenuItem
- * JD-Core Version:    0.6.2
- */

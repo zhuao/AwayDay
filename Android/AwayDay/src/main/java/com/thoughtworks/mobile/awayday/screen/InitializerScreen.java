@@ -3,21 +3,18 @@ package com.thoughtworks.mobile.awayday.screen;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Settings;
-import com.thoughtworks.mobile.awayday.listeners.OnSettingsModifyActionListener;
 import com.thoughtworks.mobile.awayday.utils.StringUtils;
 import com.thoughtworks.mobile.awayday.utils.ViewUtils;
 
 public class InitializerScreen extends LinearLayout {
-    private OnSettingsModifyActionListener onSettingsModifyActionListener;
     private ImageView submitBtn;
     private EditText userNameEditText;
 
@@ -38,7 +35,6 @@ public class InitializerScreen extends LinearLayout {
             return;
         ViewUtils.hideKeyboard(this.userNameEditText);
         Settings.getSettings().saveUserName(this.userNameEditText.getText().toString());
-        onSettingsModified();
     }
 
     private void initListener() {
@@ -56,22 +52,9 @@ public class InitializerScreen extends LinearLayout {
     }
 
     private void initUI() {
-        addView((ViewGroup) ((LayoutInflater) getContext().getSystemService("layout_inflater")).inflate(R.layout.initializer_screen_layout, this, false));
+        inflate(getContext(), R.layout.initializer_screen_layout, this);
         this.userNameEditText = ((EditText) findViewById(R.id.initializer_username));
         this.submitBtn = ((ImageView) findViewById(R.id.initializer_submit_btn));
     }
 
-    private void onSettingsModified() {
-        if (this.onSettingsModifyActionListener != null)
-            this.onSettingsModifyActionListener.onSettingsModifyAction();
-    }
-
-    public void setOnSettingsModifyActionListener(OnSettingsModifyActionListener paramOnSettingsModifyActionListener) {
-        this.onSettingsModifyActionListener = paramOnSettingsModifyActionListener;
-    }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.screen.InitializerScreen
- * JD-Core Version:    0.6.2
- */
