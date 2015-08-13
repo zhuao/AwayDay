@@ -1,18 +1,16 @@
 package com.thoughtworks.mobile.awayday.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import com.thoughtworks.mobile.awayday.R;
-import com.thoughtworks.mobile.awayday.components.AgendaNavigationMenuItem;
 import com.thoughtworks.mobile.awayday.components.NavigationMenu;
-import com.thoughtworks.mobile.awayday.components.PathNavigationMenuItem;
-import com.thoughtworks.mobile.awayday.components.SettingsNavigationMenuItem;
 import com.thoughtworks.mobile.awayday.factory.BitmapCacheManager;
 import com.thoughtworks.mobile.awayday.helper.ScreenSwitchHelper;
 import com.thoughtworks.mobile.awayday.listeners.NavigateCommand;
 import com.thoughtworks.mobile.awayday.listeners.NavigationListener;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private NavigationMenu navigationMenu;
     private ScreenSwitchHelper screenSwitchHelper;
 
@@ -27,15 +25,11 @@ public class MainActivity extends Activity {
     }
 
     private void initComponent() {
-        AgendaFragment agendaFragment = new AgendaFragment();
-        PathFragment pathFragment = new PathFragment();
-        SettingFragment settingFragment = new SettingFragment();
-
-        initNavigation(agendaFragment, pathFragment, settingFragment);
+        initNavigation();
     }
 
-    private void initNavigation(AgendaFragment agendaFragment, PathFragment pathFragment, SettingFragment settingFragment) {
-        this.screenSwitchHelper = new ScreenSwitchHelper(this, agendaFragment, pathFragment, settingFragment);
+    private void initNavigation() {
+        this.screenSwitchHelper = new ScreenSwitchHelper(this);
         this.navigationMenu.setNavigationListener(new NavigationListener() {
             @Override
             public void switchTo(NavigateCommand navigateCommand) {

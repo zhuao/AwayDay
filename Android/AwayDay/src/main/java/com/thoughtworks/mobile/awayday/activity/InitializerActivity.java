@@ -27,9 +27,6 @@ public class InitializerActivity extends AppCompatActivity {
         }, 900L);
     }
 
-    private void initListener() {
-    }
-
     private void initUI() {
         setContentView(R.layout.initializer_layout);
         initializerScreen = ((InitializerScreen) findViewById(R.id.initializer_screen));
@@ -69,7 +66,6 @@ public class InitializerActivity extends AppCompatActivity {
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         initUI();
-        initListener();
         new BeanRegister(getApplicationContext()).onRegister();
     }
 

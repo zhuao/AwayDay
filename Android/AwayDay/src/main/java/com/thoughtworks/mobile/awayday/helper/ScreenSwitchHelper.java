@@ -10,36 +10,21 @@ import com.thoughtworks.mobile.awayday.activity.PathFragment;
 import com.thoughtworks.mobile.awayday.activity.SettingFragment;
 
 public class ScreenSwitchHelper {
-    private final AgendaFragment agendaFragement;
     private final FragmentManager fragmentManager;
-    private PathFragment pathFragment;
-    private SettingFragment settingFragement;
 
-    public ScreenSwitchHelper(MainActivity mainActivity, AgendaFragment agendaFragment, PathFragment pathFragment, SettingFragment settingFragment) {
+    public ScreenSwitchHelper(MainActivity mainActivity) {
         fragmentManager = mainActivity.getFragmentManager();
-        this.agendaFragement = agendaFragment;
-        this.pathFragment = pathFragment;
-        this.settingFragement = settingFragment;
     }
 
     public void switchToAgendaScreen() {
-        fragmentManager.popBackStack();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.screen_container, agendaFragement);
-        fragmentTransaction.commit();
+        fragmentManager.beginTransaction().replace(R.id.screen_container, new AgendaFragment()).commit();
     }
 
     public void switchToPathScreen() {
-        fragmentManager.popBackStack();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.screen_container, pathFragment);
-        fragmentTransaction.commit();
+        fragmentManager.beginTransaction().replace(R.id.screen_container, new PathFragment()).commit();
     }
 
     public void switchToSettingsScreen() {
-        fragmentManager.popBackStack();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.screen_container, settingFragement);
-        fragmentTransaction.commit();
+        fragmentManager.beginTransaction().replace(R.id.screen_container, new SettingFragment()).commit();
     }
 }
