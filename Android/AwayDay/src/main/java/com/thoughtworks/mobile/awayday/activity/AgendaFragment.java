@@ -32,7 +32,7 @@ public class AgendaFragment extends Fragment implements AgendaItemActionClickedL
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.agenda_page, container);
+        View view = inflater.inflate(R.layout.agenda_page, container, false);
         agendaScreen = (AgendaScreen) view.findViewById(R.id.agenda_screen);
         initAgenda();
         return view;
@@ -45,14 +45,14 @@ public class AgendaFragment extends Fragment implements AgendaItemActionClickedL
     }
 
     private void startFetchAgendas() {
-        this.agendaScreen.startFetchAgendas();
+        agendaScreen.startFetchAgendas();
     }
     private void initAgenda() {
         this.agendaPresenter = new AgendaPresenter(agendaScreen);
         AgendaItemBuilder localAgendaItemBuilder = new AgendaItemBuilder(getActivity());
         localAgendaItemBuilder.setAgendaItemActionClickedListener(this);
         localAgendaItemBuilder.setAgenItemViewStateRecorder(this.agendaPresenter);
-        this.agendaScreen.initComponent(localAgendaItemBuilder, this.agendaPresenter);
+        agendaScreen.initComponent(localAgendaItemBuilder, this.agendaPresenter);
     }
 
     public void onJoinActionClicked(OnSessionJoinedListener paramOnSessionJoinedListener, Session paramSession) {

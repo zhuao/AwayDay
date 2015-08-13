@@ -17,11 +17,6 @@ public class SettingFragment extends Fragment {
 
     private SettingScreen settingScreen;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -26,7 +26,7 @@ public class PathFragment extends Fragment implements OnPathAddActionListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.path_page, container);
+        View rootView = inflater.inflate(R.layout.path_page, container, false);
         pathScreen = (PathScreen) rootView.findViewById(R.id.path_screen);
         initPath();
         return rootView;
