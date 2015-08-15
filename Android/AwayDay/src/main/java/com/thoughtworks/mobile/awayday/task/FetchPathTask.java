@@ -15,8 +15,3 @@ public class FetchPathTask extends AsyncTask<Void, Void, Void> {
         return null;
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.task.FetchPathTask
- * JD-Core Version:    0.6.2
- */

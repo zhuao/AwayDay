@@ -21,7 +21,6 @@ import com.thoughtworks.mobile.awayday.utils.StringUtils;
 import java.util.List;
 
 public class PathScreen extends LinearLayout {
-    private static final int PATH_DIVIDER_WIDTH = 3;
     private View addBtn;
     private LinearLayout headerContainer;
     private TextView nameTextView;
@@ -123,8 +122,3 @@ public class PathScreen extends LinearLayout {
         });
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.screen.PathScreen
- * JD-Core Version:    0.6.2
- */
