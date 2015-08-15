@@ -11,12 +11,14 @@ import android.widget.TextView;
 
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Settings;
+import com.thoughtworks.mobile.awayday.listeners.SettingScreenListener;
 import com.thoughtworks.mobile.awayday.utils.StringUtils;
 import com.thoughtworks.mobile.awayday.utils.ViewUtils;
 
 public class InitializerScreen extends LinearLayout {
     private ImageView submitBtn;
     private EditText userNameEditText;
+    private SettingScreenListener settingScreenListener;
 
     public InitializerScreen(Context paramContext) {
         super(paramContext);
@@ -31,10 +33,13 @@ public class InitializerScreen extends LinearLayout {
     }
 
     private void handleInput() {
-        if (StringUtils.isEmpty(this.userNameEditText.getText().toString()))
+        String username = this.userNameEditText.getText().toString();
+        if (StringUtils.isEmpty(username))
             return;
         ViewUtils.hideKeyboard(this.userNameEditText);
-        Settings.getSettings().saveUserName(this.userNameEditText.getText().toString());
+        if (settingScreenListener != null) {
+            settingScreenListener.saveSettings(username);
+        }
     }
 
     private void initListener() {
@@ -57,4 +62,7 @@ public class InitializerScreen extends LinearLayout {
         this.submitBtn = ((ImageView) findViewById(R.id.initializer_submit_btn));
     }
 
+    public void setSettingScreenListener(SettingScreenListener settingScreenListener) {
+        this.settingScreenListener = settingScreenListener;
+    }
 }

@@ -7,18 +7,15 @@ import com.thoughtworks.mobile.awayday.domain.Session;
 import com.thoughtworks.mobile.awayday.factory.TaskProvider;
 import com.thoughtworks.mobile.awayday.listeners.AgendaDataReceiver;
 import com.thoughtworks.mobile.awayday.listeners.AgendaItemViewStateRecorder;
-import com.thoughtworks.mobile.awayday.listeners.PullToRefreshCallback;
-import com.thoughtworks.mobile.awayday.listeners.PullToRefreshListener;
 import com.thoughtworks.mobile.awayday.screen.AgendaScreen;
 import com.thoughtworks.mobile.awayday.service.implement.RemoteUpdateAgendaService;
-import com.thoughtworks.mobile.awayday.task.UpdateAgendaTask;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class AgendaPresenter implements PullToRefreshListener, SwipeRefreshLayout.OnRefreshListener, AgendaDataReceiver, AgendaItemViewStateRecorder {
+public class AgendaPresenter implements SwipeRefreshLayout.OnRefreshListener, AgendaDataReceiver, AgendaItemViewStateRecorder {
     private List<Agenda> agendaList;
     private AgendaScreen agendaScreen;
     private Map<Integer, Integer> itemViewStateMap;

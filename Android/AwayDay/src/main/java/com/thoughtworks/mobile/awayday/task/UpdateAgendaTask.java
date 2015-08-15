@@ -17,15 +17,10 @@ public class UpdateAgendaTask extends AsyncTask<Void, Void, List<Agenda>> {
     }
 
     protected List<Agenda> doInBackground(Void[] paramArrayOfVoid) {
-        return this.updateAgendaService.updateAgendas();
+        return updateAgendaService.updateAgendas();
     }
 
     protected void onPostExecute(List<Agenda> paramList) {
         this.agendaDataReceiver.onReceivedAgenda(paramList);
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.task.UpdateAgendaTask
- * JD-Core Version:    0.6.2
- */

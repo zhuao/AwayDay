@@ -117,12 +117,11 @@ public class RemoteUpdateAgendaService
     }
 
     public List<Agenda> updateAgendas() {
-        getLocalStorage().deleteAgendas();
-        return fetchAgendas();
+        List<Agenda> agendas = getLocalStorage().queryAgendas();
+        if (agendas == null || agendas.size() == 0) {
+            return fetchAgendas();
+        } else {
+            return agendas;
+        }
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.service.implement.RemoteUpdateAgendaService
- * JD-Core Version:    0.6.2
- */
