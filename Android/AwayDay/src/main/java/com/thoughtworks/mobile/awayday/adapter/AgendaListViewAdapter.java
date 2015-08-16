@@ -101,11 +101,11 @@ public class AgendaListViewAdapter extends BaseAdapter {
         return paramInt;
     }
 
-    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
-        if (isFirstSessionInAgenda(paramInt)) {
-            return getViewWithAgendaDate(paramView, paramInt);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (isFirstSessionInAgenda(position)) {
+            return getViewWithAgendaDate(convertView, position);
         }
-        return getViewWithoutAgendaDate(paramInt, paramView);
+        return getViewWithoutAgendaDate(position, convertView);
     }
 
     public void updateAgenda(List<Agenda> paramList) {

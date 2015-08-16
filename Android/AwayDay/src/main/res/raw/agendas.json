@@ -1,0 +1,313 @@
+[
+  {
+    "agenda_date": "2012-09-15",
+    "agenda_sessions": [
+      {
+        "session_description": "AwayDay2012 Keynote",
+        "session_title": "AwayDay2012 Keynote",
+        "session_speaker": "Guo Xiao & Office principals",
+        "session_start": "2012-09-15T01:00:00Z",
+        "session_end": "2012-09-15T02:00:00Z",
+        "session_location": "All",
+        "session_id": 231
+      },
+      {
+        "session_description": "Will talk about how did we kick off REA account and our experience of growing the account",
+        "session_title": "From 0 to 50 -- my experience of growing REA account.",
+        "session_speaker": "Hu Kai",
+        "session_start": "2012-09-15T02:35:00Z",
+        "session_end": "2012-09-15T03:15:00Z",
+        "session_location": "JiuHua 九华",
+        "session_id": 232
+      },
+      {
+        "session_description": null,
+        "session_title": "Reconsider Mobile -  the vision of mobile lab",
+        "session_speaker": "Wang Zhe & Luo Guocheng",
+        "session_start": "2012-09-15T02:35:00Z",
+        "session_end": "2012-09-15T03:15:00Z",
+        "session_location": "QiLu 齐鲁",
+        "session_id": 233
+      },
+      {
+        "session_description": "ThoughtWorks is evolving; we're really starting to live the three pillars, we've extended our offerings to include continuous design, continuous delivery, mobile, and agile analytics, we're exploring verticals (starting with retail) and we are expanding rapidly in China, India, South America and Africa.   However, how we are perceived externally does necessarily reflect these changes.  Come and hear more about the journey we are commencing to tackle this challenge.",
+        "session_title": "Refreshing ThoughtWorks' brand message",
+        "session_speaker": "Chris Murphy",
+        "session_start": "2012-09-15T02:35:00Z",
+        "session_end": "2012-09-15T03:15:00Z",
+        "session_location": "YuGuan 玉关",
+        "session_id": 234
+      },
+      {
+        "session_description": "Lightning Talk",
+        "session_title": "Lightning Talk",
+        "session_speaker": "Several Speakers",
+        "session_start": "2012-09-15T02:35:00Z",
+        "session_end": "2012-09-15T04:00:00Z",
+        "session_location": "HuaXi 花溪",
+        "session_id": 236
+      },
+      {
+        "session_description": "An intro to why rich client JS and client side MVVM / MVP / MVC patterns are the next big thing for internal corporate apps. I'll cover the why rich client JS is appropriate for the enterprise and talk a bit about some of the JS tools that are making this transition possible.  Probably tools to be discussed in brief are Knockout.js, Angular.JS and ember.js.",
+        "session_title": "Killing server side MVC",
+        "session_speaker": "Ryan Murray",
+        "session_start": "2012-09-15T02:35:00Z",
+        "session_end": "2012-09-15T03:15:00Z",
+        "session_location": "XueShan 雪山",
+        "session_id": 235
+      },
+      {
+        "session_description": "在中国做本地咨询到底是怎么一回事儿?我们可以给客户提供什么价值?我们应该如何做好咨询?作为一个咨询师应该有什么样的心态?这一年多以来,从ZTE到平安,锦江,Intel,太保,以及最近又回到ZTE.有一些思考和感悟,跟大家分享一下",
+        "session_title": "咨询这件事儿",
+        "session_speaker": "Hu Zhenbo",
+        "session_start": "2012-09-15T02:35:00Z",
+        "session_end": "2012-09-15T03:15:00Z",
+        "session_location": "LanLing 兰陵",
+        "session_id": 264
+      },
+      {
+        "session_description": "Talk about the African offices and initiatives.  What are we doing in Africa and how are these offices starting differently than any previous TW offices.  ",
+        "session_title": "TWAfrica",
+        "session_speaker": "Rolf Russell & Rebecca Parsons",
+        "session_start": "2012-09-15T03:20:00Z",
+        "session_end": "2012-09-15T04:00:00Z",
+        "session_location": "LanLing 兰陵",
+        "session_id": 237
+      },
+      {
+        "session_description": "I have a good presentation about 2.5 years of TW Brazil that I've presented at other Away Days. This might be an interesting session for those in China that are interested in what we are doing in Brazil and have never had a chance to visit.",
+        "session_title": "Introduction for Brazil Office",
+        "session_speaker": "Amit A Kaul",
+        "session_start": "2012-09-15T03:20:00Z",
+        "session_end": "2012-09-15T04:00:00Z",
+        "session_location": "QiLu 齐鲁",
+        "session_id": 239
+      },
+      {
+        "session_description": "Do you sometimes wonder what Enterprise Architects actually do? That is, other than sitting together in an ivory tower hatching evil multi-year plans to build the most absurd technical solutions? Over the years I had a fair share of interaction with these centralised groups. Based on that I've got some ideas of what they're trying to do, and even better, some more ideas on how to actually achieve it. Video recording: http://www.infoq.com/presentations/Questions-for-an-Enterprise-Architect",
+        "session_title": "Questions for an Enterprise Architect",
+        "session_speaker": "Erik Doernenburg",
+        "session_start": "2012-09-15T03:20:00Z",
+        "session_end": "2012-09-15T04:00:00Z",
+        "session_location": "YuGuan 玉关",
+        "session_id": 241
+      },
+      {
+        "session_description": "This will be an introduction to Systems Thinking and how this affects you,  your client and everything we do for them",
+        "session_title": "A part vs a whole view",
+        "session_speaker": "Jane Nguyen",
+        "session_start": "2012-09-15T03:20:00Z",
+        "session_end": "2012-09-15T04:00:00Z",
+        "session_location": "XueShan 雪山",
+        "session_id": 240
+      },
+      {
+        "session_description": "My working experience in NodeJS, the magic part and the bad part",
+        "session_title": "Adventure in NodeJS(NodeJS历险记)",
+        "session_speaker": "Xiaoqing Zhang",
+        "session_start": "2012-09-15T03:20:00Z",
+        "session_end": "2012-09-15T04:00:00Z",
+        "session_location": "JiuHua 九华",
+        "session_id": 238
+      },
+      {
+        "session_description": "Afternoon Keynote",
+        "session_title": "Keynote",
+        "session_speaker": "Roy & Trevor",
+        "session_start": "2012-09-15T05:00:00Z",
+        "session_end": "2012-09-15T06:00:00Z",
+        "session_location": "All",
+        "session_id": 242
+      },
+      {
+        "session_description": "Game",
+        "session_title": "Game",
+        "session_speaker": "All",
+        "session_start": "2012-09-15T06:20:00Z",
+        "session_end": "2012-09-15T09:20:00Z",
+        "session_location": "HuaXi 花溪",
+        "session_id": 243
+      },
+      {
+        "session_description": "The TAB will have met a few weeks prior and we'll have a new Tech Radar. Possibly Xu Hao could co-present",
+        "session_title": "Latest Tech Radar",
+        "session_speaker": "Rebecca & Hao Xu",
+        "session_start": "2012-09-15T06:25:00Z",
+        "session_end": "2012-09-15T07:05:00Z",
+        "session_location": "XueShan 雪山",
+        "session_id": 246
+      },
+      {
+        "session_description": "(null)",
+        "session_title": "Leverage Mobile Technology to Transform Rural Education",
+        "session_speaker": "LinFeng Yang",
+        "session_start": "2012-09-15T06:25:00Z",
+        "session_end": "2012-09-15T07:05:00Z",
+        "session_location": "QiLu 齐鲁",
+        "session_id": 248
+      },
+      {
+        "session_description": "This is a story behind our product initiative - why I want to build product, how to keep passion for working over 60+ hours a week for more than 6 months. Also will talk about the difference between internal startup and consulting and delivery, the challenges. Hopefully we will get a real external client then.",
+        "session_title": "Why we love 60-hours working week",
+        "session_speaker": "Michael Chen",
+        "session_start": "2012-09-15T06:25:00Z",
+        "session_end": "2012-09-15T07:05:00Z",
+        "session_location": "LanLing 兰陵",
+        "session_id": 244
+      },
+      {
+        "session_description": "Is it possible to maintain a health life balance raising three children, run a company as crazy as TW, have zero routine, do ~40 trips (mainly longhaul) per year, and train for a onedayevent where you swim 3.8km in a lake, cycle 180km in the hills and run a hilly marathon to finish with?",
+        "session_title": "Fitting in an Ironman triathlon around being the CEO of TW",
+        "session_speaker": "Trevor Mather",
+        "session_start": "2012-09-15T06:25:00Z",
+        "session_end": "2012-09-15T07:05:00Z",
+        "session_location": "JiuHua 九华",
+        "session_id": 245
+      },
+      {
+        "session_description": null,
+        "session_title": "BA - the native catalyst to an effective team",
+        "session_speaker": "Jiangmei Kang(KK)",
+        "session_start": "2012-09-15T06:25:00Z",
+        "session_end": "2012-09-15T07:05:00Z",
+        "session_location": "YuGuan 玉关",
+        "session_id": 247
+      },
+      {
+        "session_description": "(null)",
+        "session_title": "Coding Ourselves into Africa Growth Story",
+        "session_speaker": "Betty Enyonam Kumahor",
+        "session_start": "2012-09-15T07:10:00Z",
+        "session_end": "2012-09-15T07:50:00Z",
+        "session_location": "JiuHua 九华",
+        "session_id": 253
+      },
+      {
+        "session_description": "What a project will aways be accompanied by?  Exciting?  Fun?  No, it's risk!  Risk comes from all phase across project's lifecycle, but during projects early age, it's more risky.  This session starts with some stories and end up with how to mitigate these risks in requirement analysis",
+        "session_title": "Risks Management in Requirement Analysis",
+        "session_speaker": "Xia Jie (Jessie) & Yao Jiuqiang",
+        "session_start": "2012-09-15T07:10:00Z",
+        "session_end": "2012-09-15T07:50:00Z",
+        "session_location": "QiLu 齐鲁",
+        "session_id": 250
+      },
+      {
+        "session_description": "Why Lean Startup? How Lean Startup may reshape the way of customer discovery and delivery? How customer validation drives Continouse design and Contionous Delivery?",
+        "session_title": "Lean Startup and Agile",
+        "session_speaker": "Yuntao Shi",
+        "session_start": "2012-09-15T07:10:00Z",
+        "session_end": "2012-09-15T07:50:00Z",
+        "session_location": "LanLing 兰陵",
+        "session_id": 249
+      },
+      {
+        "session_description": "many of you already heard about LOT a lot, here we will have details discussion why LOT, and how we do it in ZTE and Chengdu Office",
+        "session_title": "LOT",
+        "session_speaker": "Liyan Li & Hao Xu",
+        "session_start": "2012-09-15T07:10:00Z",
+        "session_end": "2012-09-15T07:50:00Z",
+        "session_location": "XueShan 雪山",
+        "session_id": 251
+      },
+      {
+        "session_description": null,
+        "session_title": "MongoDB as an agile enabler",
+        "session_speaker": "Ryan Murray",
+        "session_start": "2012-09-15T07:10:00Z",
+        "session_end": "2012-09-15T07:50:00Z",
+        "session_location": "YuGuan 玉关",
+        "session_id": 252
+      },
+      {
+        "session_description": "Is this something that we have historically under-appreciated? In today's business climate where the rapid evolution of compelling products and services is often key to success what does TW have to say about this central role?",
+        "session_title": "The role of the Product Manager",
+        "session_speaker": "Luke Barrett",
+        "session_start": "2012-09-15T07:55:00Z",
+        "session_end": "2012-09-15T08:35:00Z",
+        "session_location": "XueShan 雪山",
+        "session_id": 257
+      },
+      {
+        "session_description": "product line methodology was really hot around 1999, but barely mentioned due to the raising of agile. We can put the two to tango together, esp. with FDD method. In this presentation, we will share a real case study about how we actually productize the ZTE mobile team. And talk briefly about the idea of agile product line.",
+        "session_title": "agile product line",
+        "session_speaker": "Li Gao & Hao Xu",
+        "session_start": "2012-09-15T07:55:00Z",
+        "session_end": "2012-09-15T08:35:00Z",
+        "session_location": "LanLing 兰陵",
+        "session_id": 254
+      },
+      {
+        "session_description": "Let's listen to music together, I would like to share some masterpieces of Beethoven, from those you cannot be more familiar with to those you rarely heard about.",
+        "session_title": "Listening to Beethoven(聆听贝多芬)",
+        "session_speaker": "Teng Yun",
+        "session_start": "2012-09-15T07:55:00Z",
+        "session_end": "2012-09-15T08:35:00Z",
+        "session_location": "JiuHua 九华",
+        "session_id": 255
+      },
+      {
+        "session_description": "This is the talk I did for the webinar a year ago.  Heavily based on Jez's talk.  Introduces continuous delivery, why businesses do it, how you introduce it and key practices. Also, I will wear a funny hat.",
+        "session_title": "Introduction to Continuous Delivery",
+        "session_speaker": "Rolf Russell",
+        "session_start": "2012-09-15T07:55:00Z",
+        "session_end": "2012-09-15T08:35:00Z",
+        "session_location": "QiLu 齐鲁",
+        "session_id": 256
+      },
+      {
+        "session_description": "At some point of our lives, we all wondered the same question, what is the purpose of life. If a mango tree or an ant knows precisely what their purposes in life should be, why we, the favorite creation of god, do not know? Was this knoweldge already given to us from the very beginning of creation? what happened in between that resulted in us forgetting the answer to this key question? And consequently, spend all our life searching for its answer, whether conciously or unconciously. what has child brith to do with the purpose of life? And why child birth, even the conception of children, has imeasureblely more significant meanings than that we know of today ? if you are interested in pondering such thoughts, let's get together and i'll tell a story of a lost, and ancient civilisation.",
+        "session_title": "The importance of child birth and the purpose of life",
+        "session_speaker": "Wang Xiaodan",
+        "session_start": "2012-09-15T07:55:00Z",
+        "session_end": "2012-09-15T08:35:00Z",
+        "session_location": "YuGuan 玉关",
+        "session_id": 258
+      },
+      {
+        "session_description": "My latest book, Presentation Patterns, takes the GoF pattern (and anti-pattern) concept and applies it to building effective presentations in Keynote and Powerpoint. This session introduces some of the important patterns (and exposes some common anti-patterns) to help make your communication better. This session is for all roles, not just developers, because everyone must communicate ideas. Powerpoint is the main knowledge transfer tool in many organizations; come see how to use it to it's fullest extent.",
+        "session_title": "Presentation Patterns: Techniques for Crafting Better Presentations",
+        "session_speaker": "Neal Ford",
+        "session_start": "2012-09-15T08:40:00Z",
+        "session_end": "2012-09-15T09:20:00Z",
+        "session_location": "LanLing 兰陵",
+        "session_id": 259
+      },
+      {
+        "session_description": "分享科学备孕，选择医院，产检过程和实战经验，以及宝宝出生之后的可能面临的各种小难题，如何度过这段手忙脚乱的时光。.全是干料",
+        "session_title": "备孕产检和新生儿护理 ",
+        "session_speaker": "Shen Xiaoju",
+        "session_start": "2012-09-15T08:40:00Z",
+        "session_end": "2012-09-15T09:20:00Z",
+        "session_location": "QiLu 齐鲁",
+        "session_id": 263
+      },
+      {
+        "session_description": "interview++ was a great idea from Xi'an, but we definitely can push this to the next level by applying some lean startup principles. lean start up is about validating and learning, it is also true for the recruiting. We'd like to share the experiences about how lean works in recruiting area.",
+        "session_title": "lean recruiting",
+        "session_speaker": "Hao Xu",
+        "session_start": "2012-09-15T08:40:00Z",
+        "session_end": "2012-09-15T09:20:00Z",
+        "session_location": "XueShan 雪山",
+        "session_id": 262
+      },
+      {
+        "session_description": "The community role in a learning organization; \nWhat we did to bring the BA community back to from death; \nWhat we learned on community design and building globally and locally.",
+        "session_title": "Build a community - challenges and tips ",
+        "session_speaker": "Jane/Jiangmei Kang(KK)",
+        "session_start": "2012-09-15T08:40:00Z",
+        "session_end": "2012-09-15T09:20:00Z",
+        "session_location": "YuGuan 玉关",
+        "session_id": 261
+      },
+      {
+        "session_description": "Every good programer should be a polyglot, but it could be hard to use all your favorite languages in real world project. But you can still apply some ideas from other programming into your project. I'm going to share my thoughts on this topic which comes from my consulting and delivery projects.",
+        "session_title": "Steal Ideas from Other Programming Language",
+        "session_speaker": "Ye Zheng",
+        "session_start": "2012-09-15T08:40:00Z",
+        "session_end": "2012-09-15T09:20:00Z",
+        "session_location": "JiuHua 九华",
+        "session_id": 260
+      }
+    ]
+  }
+]
