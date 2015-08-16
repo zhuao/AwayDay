@@ -2,6 +2,12 @@ package com.thoughtworks.mobile.awayday.service.implement;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.google.gson.GsonBuilder;
+import com.google.gson.TypeAdapter;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.thoughtworks.mobile.awayday.domain.Agenda;
 import com.thoughtworks.mobile.awayday.domain.Session;
 import com.thoughtworks.mobile.awayday.service.UpdateAgendaService;
@@ -12,14 +18,12 @@ import com.thoughtworks.mobile.awayday.utils.FileUtils;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class RemoteUpdateAgendaService
         implements UpdateAgendaService {
@@ -85,31 +89,19 @@ public class RemoteUpdateAgendaService
     }
 
     private List<Agenda> parseAgendas(String agendaList) {
-        ArrayList localArrayList = new ArrayList();
-        if (agendaList != null) ;
-        try {
-            JSONArray localJSONArray1 = new JSONArray(agendaList);
-            int i = localJSONArray1.length();
-            for (int j = 0; j < i; j++) {
-                JSONObject localJSONObject1 = localJSONArray1.getJSONObject(j);
-                Agenda localAgenda = new Agenda();
-                localAgenda.setAgendaId(j);
-                localAgenda.setAgendaDate(this.agendaDateFormat.parse(localJSONObject1.getString("agenda_date")));
-                JSONArray localJSONArray2 = localJSONObject1.getJSONArray("agenda_sessions");
-                int k = localJSONArray2.length();
-                for (int m = 0; m < k; m++) {
-                    JSONObject localJSONObject2 = localJSONArray2.getJSONObject(m);
-                    localAgenda.addSession(new Session(localJSONObject2.getInt("session_id"), localJSONObject2.getString("session_title"), this.sessionDateFormat.parse(replaceTandZ(localJSONObject2.getString("session_start"))), this.sessionDateFormat.parse(replaceTandZ(localJSONObject2.getString("session_end"))), localJSONObject2.getString("session_speaker"), localJSONObject2.getString("session_description"), localJSONObject2.getString("session_location"), j));
-                }
-                localArrayList.add(localAgenda);
+
+        TypeAdapter<Date> dateTypeAdapter = new DateTypeAdapter();
+        List<Agenda> agendas = (List<Agenda>) new GsonBuilder().setDateFormat("yyyy-MM-dd").registerTypeAdapter(Date.class, dateTypeAdapter).create().fromJson(agendaList, new TypeToken<List<Agenda>>() {
+        }.getType());
+        int agendaIndex = 1;
+        for (Agenda agenda : agendas) {
+            agenda.setAgendaId(agendaIndex);
+            for (Session session : agenda.getSessions()) {
+                session.agendaId = agendaIndex;
             }
-        } catch (JSONException localJSONException) {
-            localJSONException.printStackTrace();
-            return localArrayList;
-        } catch (ParseException localParseException) {
-            localParseException.printStackTrace();
+            agendaIndex++;
         }
-        return localArrayList;
+        return agendas;
     }
 
     private String replaceTandZ(String paramString) {
@@ -122,6 +114,33 @@ public class RemoteUpdateAgendaService
             return fetchAgendas();
         } else {
             return agendas;
+        }
+    }
+
+    private static class DateTypeAdapter extends TypeAdapter<Date> {
+
+        private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+        private static SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
+        private static Pattern DATE_PATTERN = Pattern.compile("^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
+
+
+        @Override
+        public void write(JsonWriter out, Date value) throws IOException {
+            out.value(DATE_TIME_FORMAT.format(value));
+        }
+
+        @Override
+        public Date read(JsonReader in) throws IOException {
+            String s = in.nextString();
+            try {
+                if (DATE_PATTERN.matcher(s).find()) {
+                    return DATE_FORMAT.parse(s);
+                } else {
+                    return DATE_TIME_FORMAT.parse(s);
+                }
+            } catch (ParseException e) {
+                throw new IOException(e);
+            }
         }
     }
 }

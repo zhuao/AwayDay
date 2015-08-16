@@ -5,6 +5,8 @@ dependencies {
     compile project(':View:StepIndicator')
     compile fileTree("libs")
 
+    compile 'com.google.code.gson:gson:2.3.1'
+
     testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile 'junit:junit:4.12'
     testCompile ("com.squareup.assertj:assertj-android:1.0.0") {

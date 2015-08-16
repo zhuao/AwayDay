@@ -1,13 +1,18 @@
 package com.thoughtworks.mobile.awayday.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 public class Agenda {
+    @SerializedName("agenda_date")
     private Date agendaDate;
+
     private int agendaId;
+    @SerializedName("agenda_sessions")
     private List<Session> sessions = new ArrayList();
 
     public void addSession(Session paramSession) {
