@@ -26,7 +26,6 @@ public class InitializerActivity extends AppCompatActivity implements SettingScr
         setContentView(R.layout.initializer_layout);
         initializerScreen = ((InitializerScreen) findViewById(R.id.initializer_screen));
         logoScreen = ((ImageView) findViewById(R.id.app_screen_logo));
-        new BeanRegister(getApplicationContext()).onRegister();
     }
 
     @Override
