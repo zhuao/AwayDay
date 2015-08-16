@@ -10,18 +10,20 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/App.Theme">
+        <activity android:name=".activity.LessonOneActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.InitializerActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:label="@string/app_name"
             android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/App.Theme"
             android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.MainActivity"
