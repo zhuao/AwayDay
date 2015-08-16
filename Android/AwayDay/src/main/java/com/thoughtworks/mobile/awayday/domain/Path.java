@@ -4,7 +4,8 @@ import com.thoughtworks.mobile.awayday.factory.TaskProvider;
 import com.thoughtworks.mobile.awayday.listeners.OnSaveFootprintListener;
 import com.thoughtworks.mobile.awayday.listeners.OnShareFootprintListener;
 import com.thoughtworks.mobile.awayday.listeners.PathDataChangedListener;
-import com.thoughtworks.mobile.awayday.service.SaveToLocalService;
+import com.thoughtworks.mobile.awayday.presenter.PathPresenter;
+import com.thoughtworks.mobile.awayday.service.SavePathService;
 import com.thoughtworks.mobile.awayday.service.ShareToRemoteService;
 import com.thoughtworks.mobile.awayday.storage.BeanContext;
 
@@ -33,13 +34,13 @@ public class Path {
             PathDataChangedListener localPathDataChangedListener = (PathDataChangedListener) localIterator.next();
             if (localPathDataChangedListener == null)
                 this.pathDataChangedListeners.remove(localPathDataChangedListener);
-            else
-                localPathDataChangedListener.onFootprintChanged();
+//            else
+//                localPathDataChangedListener.onFootprintChanged();
         }
     }
 
     public void saveToLocal(Footprint paramFootprint) {
-        TaskProvider.createSaveToLocalTask((SaveToLocalService) BeanContext.getInstance().getBean(SaveToLocalService.class), (OnSaveFootprintListener) BeanContext.getInstance().getBean(OnSaveFootprintListener.class)).execute(new Footprint[]{paramFootprint});
+        TaskProvider.createSavePathTask((SavePathService) BeanContext.getInstance().getBean(SavePathService.class), (OnSaveFootprintListener) BeanContext.getInstance().getBean(OnSaveFootprintListener.class)).execute(new Footprint[]{paramFootprint});
     }
 
     private void shareToServer(Footprint paramFootprint) {
@@ -67,4 +68,7 @@ public class Path {
         shareToServer(paramFootprint);
     }
 
+    public void removePathDataChangedListener(PathPresenter pathPresenter) {
+        pathDataChangedListeners.remove(pathPresenter);
+    }
 }

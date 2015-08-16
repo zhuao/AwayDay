@@ -12,8 +12,7 @@ import com.thoughtworks.mobile.awayday.service.FetchTrackService;
 import java.util.Collections;
 import java.util.List;
 
-public class PathPresenter
-        implements OnSettingsChangedListener, PathDataChangedListener {
+public class PathPresenter implements OnSettingsChangedListener, PathDataChangedListener {
     private FetchTrackService fetchTrackService;
     private final PathScreen pathScreen;
 
@@ -49,8 +48,3 @@ public class PathPresenter
         this.pathScreen.setUserName(Settings.getSettings().getUserName());
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.presenter.PathPresenter
- * JD-Core Version:    0.6.2
- */

@@ -9,8 +9,3 @@ public abstract interface PathDataChangedListener {
 
     public abstract void onFootprintChanged();
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.listeners.PathDataChangedListener
- * JD-Core Version:    0.6.2
- */

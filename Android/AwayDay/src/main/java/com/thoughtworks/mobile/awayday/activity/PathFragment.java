@@ -37,10 +37,21 @@ public class PathFragment extends Fragment implements OnPathAddActionListener {
         this.pathScreen.initComponent(localPathItemBuilder);
         this.pathScreen.setUserName(Settings.getSettings().getUserName());
         this.pathScreen.setAddButtonClickedListener(this);
-        this.pathPresenter = new PathPresenter(this.pathScreen);
+        this.pathPresenter = new PathPresenter(pathScreen);
         Settings.getSettings().addListener(this.pathPresenter);
-        ((Path) BeanContext.getInstance().getBean(Path.class)).addPathDataChangedListener(this.pathPresenter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((Path) BeanContext.getInstance().getBean(Path.class)).addPathDataChangedListener(pathPresenter);
         this.pathPresenter.loadFootprints(new FetchTrackServiceImpl());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((Path) BeanContext.getInstance().getBean(Path.class)).removePathDataChangedListener(pathPresenter);
     }
 
     public void onPathAddAction() {

@@ -3,17 +3,17 @@ package com.thoughtworks.mobile.awayday.task;
 import android.os.AsyncTask;
 import com.thoughtworks.mobile.awayday.domain.Footprint;
 import com.thoughtworks.mobile.awayday.listeners.OnSaveFootprintListener;
-import com.thoughtworks.mobile.awayday.service.SaveToLocalService;
+import com.thoughtworks.mobile.awayday.service.SavePathService;
 import com.thoughtworks.mobile.awayday.utils.ActionStatus;
 
-public class SaveToLocalTask extends AsyncTask<Footprint, Void, Void> {
+public class SavePathTask extends AsyncTask<Footprint, Void, Void> {
     private OnSaveFootprintListener OnSaveFootprintListener;
     private ActionStatus actionStatus;
-    private SaveToLocalService saveToLocalService;
+    private SavePathService savePathService;
     private Footprint savedFootprint;
 
-    public SaveToLocalTask(SaveToLocalService paramSaveToLocalService, OnSaveFootprintListener paramOnSaveFootprintListener) {
-        this.saveToLocalService = paramSaveToLocalService;
+    public SavePathTask(SavePathService paramSavePathService, OnSaveFootprintListener paramOnSaveFootprintListener) {
+        this.savePathService = paramSavePathService;
         this.OnSaveFootprintListener = paramOnSaveFootprintListener;
     }
 
@@ -21,7 +21,7 @@ public class SaveToLocalTask extends AsyncTask<Footprint, Void, Void> {
         if ((paramArrayOfFootprint == null) || (paramArrayOfFootprint.length == 0))
             return null;
         this.savedFootprint = paramArrayOfFootprint[0];
-        this.actionStatus = this.saveToLocalService.saveToLocal(this.savedFootprint);
+        this.actionStatus = this.savePathService.saveToLocal(this.savedFootprint);
         return null;
     }
 

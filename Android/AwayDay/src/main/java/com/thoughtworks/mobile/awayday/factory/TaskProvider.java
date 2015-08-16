@@ -8,13 +8,13 @@ import com.thoughtworks.mobile.awayday.listeners.OnShareFootprintListener;
 import com.thoughtworks.mobile.awayday.listeners.ParseThumbnailListener;
 import com.thoughtworks.mobile.awayday.service.FetchTrackService;
 import com.thoughtworks.mobile.awayday.service.JoinService;
-import com.thoughtworks.mobile.awayday.service.SaveToLocalService;
+import com.thoughtworks.mobile.awayday.service.SavePathService;
 import com.thoughtworks.mobile.awayday.service.ShareToRemoteService;
 import com.thoughtworks.mobile.awayday.service.UpdateAgendaService;
 import com.thoughtworks.mobile.awayday.task.FetchPathTask;
 import com.thoughtworks.mobile.awayday.task.JoinSessionTask;
 import com.thoughtworks.mobile.awayday.task.ParseThumbnailTask;
-import com.thoughtworks.mobile.awayday.task.SaveToLocalTask;
+import com.thoughtworks.mobile.awayday.task.SavePathTask;
 import com.thoughtworks.mobile.awayday.task.SharePostTask;
 import com.thoughtworks.mobile.awayday.task.UpdateAgendaTask;
 
@@ -31,8 +31,8 @@ public class TaskProvider {
         return new ParseThumbnailTask(paramContentResolver, paramParseThumbnailListener);
     }
 
-    public static SaveToLocalTask createSaveToLocalTask(SaveToLocalService paramSaveToLocalService, OnSaveFootprintListener paramOnSaveFootprintListener) {
-        return new SaveToLocalTask(paramSaveToLocalService, paramOnSaveFootprintListener);
+    public static SavePathTask createSavePathTask(SavePathService paramSavePathService, OnSaveFootprintListener paramOnSaveFootprintListener) {
+        return new SavePathTask(paramSavePathService, paramOnSaveFootprintListener);
     }
 
     public static SharePostTask createSharePostTask(ShareToRemoteService paramShareToRemoteService, OnShareFootprintListener paramOnShareFootprintListener) {

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private void initComponent() {
         initNavigation();
 
-        getFragmentManager().beginTransaction().add(R.id.screen_container, new AgendaFragment()).commit();
+        screenSwitchHelper.switchToAgendaScreen();
     }
 
     private void initNavigation() {

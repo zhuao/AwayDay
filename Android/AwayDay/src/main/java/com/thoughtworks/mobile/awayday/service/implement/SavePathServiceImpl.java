@@ -1,12 +1,12 @@
 package com.thoughtworks.mobile.awayday.service.implement;
 
 import com.thoughtworks.mobile.awayday.domain.Footprint;
-import com.thoughtworks.mobile.awayday.service.SaveToLocalService;
+import com.thoughtworks.mobile.awayday.service.SavePathService;
 import com.thoughtworks.mobile.awayday.storage.BeanContext;
 import com.thoughtworks.mobile.awayday.storage.LocalStorage;
 import com.thoughtworks.mobile.awayday.utils.ActionStatus;
 
-public class SaveToLocalServiceImpl implements SaveToLocalService {
+public class SavePathServiceImpl implements SavePathService {
 
     public ActionStatus saveToLocal(Footprint paramFootprint) {
         try {

@@ -145,12 +145,17 @@ public class SqliteStorage implements LocalStorage {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        finally {
-//            this.sqLiteHelper.close();
-//        }
     }
 
     public void addFootprint(Footprint paramFootprint) {
+        try {
+            SQLiteDatabase writableDatabase = getWritableDatabase();
+            writableDatabase.execSQL("insert into tracks ('message', 'picture_path', 'track_time' ) values(?,?, ?)", new Object[]{paramFootprint.content, paramFootprint.imageUriString, paramFootprint.createdDate});
+        } catch (Exception e) {
+            Log.d(SqliteStorage.class.getName(), e.getMessage());
+            e.printStackTrace();
+        }
+
     }
 
     public void deleteAgendas() {
@@ -169,21 +174,13 @@ public class SqliteStorage implements LocalStorage {
     public void joinSession(int paramInt, boolean paramBoolean) {
         try {
             SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
-            String[] arrayOfString1 = new String[1];
-            arrayOfString1[0] = (paramInt + "");
-            Cursor localCursor = localSQLiteDatabase.rawQuery("SELECT * FROM session_statuses where session_id = ?", arrayOfString1);
+            Cursor localCursor = localSQLiteDatabase.rawQuery("SELECT * FROM session_statuses where session_id = ?", new String[]{(paramInt + "")});
             if (localCursor.getCount() != 0) {
                 ContentValues localContentValues = new ContentValues();
                 localContentValues.put("has_joined", Boolean.valueOf(paramBoolean));
-                String[] arrayOfString2 = new String[1];
-                arrayOfString2[0] = (paramInt + "");
-                localSQLiteDatabase.update("session_statuses", localContentValues, "session_id = ?", arrayOfString2);
+                localSQLiteDatabase.update("session_statuses", localContentValues, "session_id = ?", new String[]{String.valueOf(paramInt)});
             } else {
-                Object[] arrayOfObject = new Object[3];
-                arrayOfObject[0] = Integer.valueOf(paramInt);
-                arrayOfObject[1] = Boolean.valueOf(paramBoolean);
-                arrayOfObject[2] = Boolean.valueOf(false);
-                localSQLiteDatabase.execSQL("insert into session_statuses values(?,?,?)", arrayOfObject);
+                localSQLiteDatabase.execSQL("insert into session_statuses values(?,?,?)", new Object[]{paramInt, paramBoolean, false});
             }
             localCursor.close();
         } finally {
