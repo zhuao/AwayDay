@@ -32,7 +32,6 @@ public class AgendaScreen extends LinearLayout {
 
     private void initPresenter() {
         swipeRefreshLayout.setOnRefreshListener(agendaPresenter);
-        this.agendaPresenter.setRefreshAgendaCallback(swipeRefreshLayout);
     }
 
     private void initUI() {
@@ -54,14 +53,16 @@ public class AgendaScreen extends LinearLayout {
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                //it couldn't show loading before swipeRefreshLayout.onMeasure called
                 swipeRefreshLayout.setRefreshing(true);
             }
         });
+
         agendaPresenter.onRefresh();
+
     }
 
     public void updateWithAgenda(List<Agenda> paramList) {
         this.agendaListViewAdapter.updateAgenda(paramList);
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

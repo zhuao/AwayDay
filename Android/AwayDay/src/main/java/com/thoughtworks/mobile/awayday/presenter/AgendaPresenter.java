@@ -19,7 +19,6 @@ public class AgendaPresenter implements SwipeRefreshLayout.OnRefreshListener, Ag
     private List<Agenda> agendaList;
     private AgendaScreen agendaScreen;
     private Map<Integer, Integer> itemViewStateMap;
-    private SwipeRefreshLayout swipeRefreshCallback;
 
     public AgendaPresenter(AgendaScreen paramAgendaScreen) {
         this.agendaScreen = paramAgendaScreen;
@@ -35,9 +34,6 @@ public class AgendaPresenter implements SwipeRefreshLayout.OnRefreshListener, Ag
     public void onReceivedAgenda(List<Agenda> paramList) {
         this.agendaList = paramList;
         this.agendaScreen.updateWithAgenda(paramList);
-        if (swipeRefreshCallback != null) {
-            swipeRefreshCallback.setRefreshing(false);
-        }
     }
 
     public void onRefresh() {
@@ -47,10 +43,6 @@ public class AgendaPresenter implements SwipeRefreshLayout.OnRefreshListener, Ag
 
     public void saveAgendaItemAppendixViewState(int paramInt1, int paramInt2) {
         this.itemViewStateMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    }
-
-    public void setRefreshAgendaCallback(SwipeRefreshLayout paramPullToRefreshCallback) {
-        this.swipeRefreshCallback = paramPullToRefreshCallback;
     }
 
     public void setRemindForSession(int paramInt, boolean paramBoolean) {

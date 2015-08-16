@@ -62,11 +62,11 @@ public class RemoteUpdateAgendaService
         String response = fetchJsonFromServer();
         String logOutput = " no agendas returned from server";
         if (response == null) {
-            Log.d("fetched agendas from server", logOutput);
+            Log.d(RemoteUpdateAgendaService.class.getName(), logOutput);
             return fetchJsonFromLocal();
         }
         logOutput = response;
-        Log.d("fetched agendas from server", logOutput);
+        Log.d(RemoteUpdateAgendaService.class.getName(), logOutput);
         FileUtils.saveFile(this.context, AGENDAS_FILE_NAME, response);
         return response;
 

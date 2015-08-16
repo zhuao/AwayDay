@@ -60,8 +60,3 @@ public class Agenda {
         return "Agenda Date:" + this.agendaDate + ", sessions count: " + this.sessions.size() + "---{ " + this.sessions.toString() + " }";
     }
 }
-
-/* Location:           /Users/zhuao/repository/awayday/decompiler/AwayDay/classes-dex2jar.jar
- * Qualified Name:     com.thoughtworks.mobile.awayday.domain.Agenda
- * JD-Core Version:    0.6.2
- */

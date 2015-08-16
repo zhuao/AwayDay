@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.thoughtworks.mobile.awayday.R;
 import com.thoughtworks.mobile.awayday.domain.Footprint;
 import com.thoughtworks.mobile.awayday.listeners.ScreenBackWithoutResultButtonClickedListener;
@@ -38,7 +39,7 @@ public class ShareScreen extends RelativeLayout implements View.OnClickListener 
     }
 
     private void addThumbnailToView(Bitmap paramBitmap) {
-        this.thumbnailTipText.setVisibility(0);
+        this.thumbnailTipText.setVisibility(VISIBLE);
         ImageView localImageView = new ImageView(getContext());
         localImageView.setImageBitmap(paramBitmap);
         localImageView.setOnClickListener(this);
