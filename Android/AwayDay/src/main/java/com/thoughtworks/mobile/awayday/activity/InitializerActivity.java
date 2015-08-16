@@ -20,18 +20,32 @@ public class InitializerActivity extends AppCompatActivity implements SettingScr
     private InitializerScreen initializerScreen;
     private ImageView logoScreen;
 
+    @Override
+    protected void onCreate(Bundle paramBundle) {
+        super.onCreate(paramBundle);
+        setContentView(R.layout.initializer_layout);
+        initializerScreen = ((InitializerScreen) findViewById(R.id.initializer_screen));
+        logoScreen = ((ImageView) findViewById(R.id.app_screen_logo));
+        new BeanRegister(getApplicationContext()).onRegister();
+    }
+
+    @Override
+    protected void onPostCreate(Bundle paramBundle) {
+        super.onPostCreate(paramBundle);
+        initScreenListener();
+        if (willLeaveSettingsScreen(Settings.getSettings())) {
+            startMainActivity();
+            return;
+        }
+        showLogoScreen();
+    }
+
     private void hideSplash() {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 InitializerActivity.this.switchToInitializeScreen();
             }
         }, 900L);
-    }
-
-    private void initUI() {
-        setContentView(R.layout.initializer_layout);
-        initializerScreen = ((InitializerScreen) findViewById(R.id.initializer_screen));
-        logoScreen = ((ImageView) findViewById(R.id.app_screen_logo));
     }
 
     private void showLogoScreen() {
@@ -64,24 +78,8 @@ public class InitializerActivity extends AppCompatActivity implements SettingScr
         return !StringUtils.isEmpty(paramSettings.getUserName());
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
-        initUI();
-        initScreenListener();
-        new BeanRegister(getApplicationContext()).onRegister();
-    }
-
     private void initScreenListener() {
         initializerScreen.setSettingScreenListener(this);
-    }
-
-    protected void onPostCreate(Bundle paramBundle) {
-        super.onPostCreate(paramBundle);
-        if (willLeaveSettingsScreen(Settings.getSettings())) {
-            startMainActivity();
-            return;
-        }
-        showLogoScreen();
     }
 
     @Override
