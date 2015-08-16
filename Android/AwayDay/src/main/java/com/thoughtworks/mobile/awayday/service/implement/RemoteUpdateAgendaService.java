@@ -3,13 +3,7 @@ package com.thoughtworks.mobile.awayday.service.implement;
 import android.content.Context;
 import android.util.Log;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.TypeAdapter;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import com.thoughtworks.mobile.awayday.domain.Agenda;
-import com.thoughtworks.mobile.awayday.domain.Session;
 import com.thoughtworks.mobile.awayday.service.UpdateAgendaService;
 import com.thoughtworks.mobile.awayday.storage.BeanContext;
 import com.thoughtworks.mobile.awayday.storage.LocalStorage;
@@ -19,11 +13,11 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.text.ParseException;
+import java.io.StringReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class RemoteUpdateAgendaService
         implements UpdateAgendaService {
@@ -39,7 +33,7 @@ public class RemoteUpdateAgendaService
     }
 
     private List<Agenda> fetchAgendas() {
-        List localList = parseAgendas(getAgendasJSON());
+        List localList = Agenda.parseAgendas(new StringReader(getAgendasJSON()));
         insertAgendasToDB(localList);
         Log.i("Received AgendaList", localList.toString());
         return localList;
@@ -88,26 +82,6 @@ public class RemoteUpdateAgendaService
         }
     }
 
-    private List<Agenda> parseAgendas(String agendaList) {
-
-        TypeAdapter<Date> dateTypeAdapter = new DateTypeAdapter();
-        List<Agenda> agendas = (List<Agenda>) new GsonBuilder().setDateFormat("yyyy-MM-dd").registerTypeAdapter(Date.class, dateTypeAdapter).create().fromJson(agendaList, new TypeToken<List<Agenda>>() {
-        }.getType());
-        int agendaIndex = 1;
-        for (Agenda agenda : agendas) {
-            agenda.setAgendaId(agendaIndex);
-            for (Session session : agenda.getSessions()) {
-                session.agendaId = agendaIndex;
-            }
-            agendaIndex++;
-        }
-        return agendas;
-    }
-
-    private String replaceTandZ(String paramString) {
-        return paramString.replace('T', ' ').replace("Z", "");
-    }
-
     public List<Agenda> updateAgendas() {
         List<Agenda> agendas = getLocalStorage().queryAgendas();
         if (agendas == null || agendas.size() == 0) {
@@ -117,30 +91,4 @@ public class RemoteUpdateAgendaService
         }
     }
 
-    private static class DateTypeAdapter extends TypeAdapter<Date> {
-
-        private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-        private static SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
-        private static Pattern DATE_PATTERN = Pattern.compile("^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
-
-
-        @Override
-        public void write(JsonWriter out, Date value) throws IOException {
-            out.value(DATE_TIME_FORMAT.format(value));
-        }
-
-        @Override
-        public Date read(JsonReader in) throws IOException {
-            String s = in.nextString();
-            try {
-                if (DATE_PATTERN.matcher(s).find()) {
-                    return DATE_FORMAT.parse(s);
-                } else {
-                    return DATE_TIME_FORMAT.parse(s);
-                }
-            } catch (ParseException e) {
-                throw new IOException(e);
-            }
-        }
-    }
 }
